@@ -1,0 +1,92 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-posts {
+	h2 {font-weight:500;}
+}
+.c-post {
+	align-items: flex-start;
+	margin-bottom:space-px(700);
+
+	@include breakpoint("xl") {
+		margin-bottom: space-px(1500);
+	}
+
+	&:last-of-type {
+		margin-bottom:0;
+	}
+
+	&__meta {
+		margin-bottom:space-px(100);
+	}
+
+	&__content {
+		margin-bottom:space-px(600);
+
+		@include breakpoint("xl"){
+			margin-bottom:0;
+		}
+	}
+
+	&__thumbnail-link {
+		background-color: colorSet("ash", 100);
+		border-radius: radius-px(500);
+		transition: .4s background-color ease;
+		overflow:hidden;
+	}
+
+	&__thumbnail {
+		transition: .4s transform ease;
+
+	}
+
+	&__cs-wrapper {
+		background-color: colorSet("ash", 100);
+		position:relative;
+		border-radius: radius-px(500);	
+				overflow:hidden;	
+	}
+
+	&__thumbnail-overlay {
+		position:absolute;
+		top:0;
+		left:0;
+		bottom:0;
+		right:0;
+		background: #ffffff;
+		background: linear-gradient(0deg,rgba(255,255,255, 1) 0%, rgba(255,255,255, 0.31) 100%);
+		backdrop-filter: blur(6px);
+    	mask-image: linear-gradient(to top, #ffffff 0% 20%, transparent 55% 100%);
+		border-radius: radius-px(500);	
+	}
+
+	&__cs-label {    	
+		position:absolute;
+		top:24px;
+		left:24px;
+		//transform: translate(-50%, -50%);
+		font-weight:500;
+		color:colorSet("plum", 500);
+		font-size:14px;
+		padding:.25rem .75rem;
+		font-style:italic;
+		border-radius:radius-px(200);
+		background:colorSet("plum", 100);
+		border:1px solid colorSet("plum", 200);
+
+	}
+
+}
+
+.c-post__thumbnail-link:hover {
+	background-color: var(--thumbHover);
+	cursor:pointer;
+
+	.c-post__thumbnail {
+		transform: scale(1.05);
+	}
+}
+
+
+

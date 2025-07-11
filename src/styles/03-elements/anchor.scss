@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+a {
+	color: colorSet("ash", 900);
+	font-weight:600;
+	text-decoration-thickness:2px;
+	text-decoration-color: colorSet("plum", 500);
+	text-underline-offset: 2px;
+	cursor:pointer;
+
+	&:hover {
+		text-decoration:none;
+
+		color: colorSet("plum", 500);
+	}
+}

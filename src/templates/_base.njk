@@ -1,0 +1,37 @@
+{%- import "macros/components.njk" as components -%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "fragments/fragment.ga4.njk" %}  
+    <meta charset="utf-8">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/444e19b174.js" crossorigin="anonymous"></script>   
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <!-- IE compatibility -->
+    <meta http-equiv='x-ua-compatible' content='ie=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ PAGE.title or data.META.title}}</title>
+    <meta name='description' content='{{ PAGE.description or data.META.description  }}'>
+
+    {% block pageStyles %}
+
+    {% endblock %}  
+  </head>
+
+  <body id="top">
+    {% include "fragments/fragment.icons.njk" %}
+    {% include "fragments/fragment.header.njk" %}
+    <main class="o-main-container" role="main">
+    {% block body %}{% endblock %}
+    </main>
+    {% include "fragments/fragment.footer.njk" %}
+    <script type="module" src="/js/main.js"></script>
+  </body>
+
+
+</html>

@@ -1,0 +1,139 @@
+@use "sass:map";
+@use "sass:math";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+
+.u-hide-visually {
+  visibility: hidden !important;
+}
+
+.u-show-visually {
+  visibility: visible !important;
+}
+
+.u-hide {
+  display: none !important;
+}
+
+.u-show {
+  display: revert !important;
+}
+
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.u-not-sr-only {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+} 
+
+.u-flex {
+  display:flex;
+}
+
+.u-block {
+  display:block
+}
+
+.u-inline {
+  display:inline;
+}
+
+.u-inlineblock {
+  display:inline-block;
+}
+
+@for $i from -1 through 10 {
+  @if $i == -1 {
+    .u-order-first {
+      order: $i;
+    }
+  }
+  @else {
+    .u-order-#{$i} {
+      order:$i;
+    }
+  }
+}
+
+@each $bpkey, $bpvalue in config.$token-mq {
+  @include breakpoint($bpkey) {
+    .u-hide-visually-\@#{$bpkey} {
+      visibility: hidden !important;
+    }
+
+    .u-show-visually-\@#{$bpkey} {
+      visibility: visible !important;
+    }
+
+    .u-hide-\@#{$bpkey} {
+      display: none !important;
+    }
+
+    .u-show-\@#{$bpkey} {
+      display: revert !important;
+    }
+
+    .u-sr-only-\@#{$bpkey} {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .u-not-sr-only-\@#{$bpkey} {
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      margin: 0 !important;
+      overflow: visible !important;
+      clip: auto !important;
+      white-space: normal !important;
+    }
+
+    .u-block-\@#{$bpkey} {
+      display:block
+    }
+
+    .u-inline-\@#{$bpkey} {
+      display:inline;
+    }
+
+    .u-inlineblock-\@#{$bpkey} {
+      display:inline-block;
+    }
+
+    @for $i from -1 through 10 {
+      @if $i == -1 {
+        .u-order-first-\@#{$bpkey} {
+          order: $i;
+        }
+      }
+      @else {
+        .u-order-#{$i}-\@#{$bpkey} {
+          order:$i;
+        }
+      }
+    }    
+  }
+}

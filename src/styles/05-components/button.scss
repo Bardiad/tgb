@@ -1,0 +1,203 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+$gradient1Color: colorSet("plum", 500);
+$gradient2Color: #ed5102;
+$gradient3Color: colorSet("aqua", 500);
+
+
+button,
+input[type="button"],
+input[type="submit"] {
+  font: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  background-color: colorSet("ash", 100);
+  padding: 0.5em 1em;
+  border-radius:  radius-px("rounded");
+  transition: background-color .4s ease, color .4s ease, border-color .4s ease;
+  white-space:nowrap;
+	font-weight:500;
+
+  &:hover, &:focus-visible {
+  	background-color:colorSet("ash", 200);
+  }
+
+  &:active {
+  	background-color:colorSet("ash", 300);
+  }
+
+  &.xs {
+		font-size: fontsize-px(200);
+		line-height: lineheight-px(200);		
+		// letter-spacing: letterspace-px(200);
+		padding: space-px(200) space-px(300);
+
+  }
+
+  &.sm {
+		font-size: fontsize-px(300);
+		line-height: lineheight-px(300);		
+		letter-spacing: letterspace-px(300);
+		padding: space-px(200) space-px(500);
+  }
+
+  &.lg {
+		font-size: fontsize-px(300);
+		line-height: lineheight-px(300);
+		letter-spacing: letterspace-px(300);		
+		padding: space-px(300) space-px(500);
+  }
+
+  &.ghost {
+  	background:transparent;
+  	border:1px solid colorSet("ash", 200);
+
+  	&:hover, &:focus-visible  { background-color:colorSet("ash", 50); }
+  	&:active { background-color:colorSet("ash", 100); }
+  }
+
+}
+
+
+.c-button {
+
+
+	display:inline-block;
+  position: relative;	
+	border-radius: radius-px("rounded");
+	transition: background-color .4s ease, color .4s ease, border-color .4s ease, box-shadow .4s ease;
+	text-decoration:none;
+	font-weight:500;
+  white-space:nowrap;
+  overflow: hidden; 
+  padding:0.75rem 1rem;
+
+	&:hover, &:focus-visible { 
+		cursor:pointer;
+	}
+
+	&--emphasis {
+  	box-shadow: 0 1px 5px 0 rgba(colorSet("plum", 800), 0.5);
+
+  	&:hover, &:focus-visible {
+  		box-shadow: 0 1px 7px 0 rgba(colorSet("plum", 800), 0.9);		  		
+  	}
+	}
+
+	&--ghost {
+
+		background:transparent;
+	}
+
+	&--primary {
+		background-color: colorSet("plum", 500);
+		color: colorSet("plum", 100);
+
+		&:hover,
+		&:focus-visible {
+			background-color: colorSet("plum", 700);
+			color: colorSet("plum", 100);
+		}
+
+		&:active {
+			background-color: colorSet("plum", 900);
+			color: colorSet("plum", 100);
+		}
+	}
+
+	&--secondary {
+		background-color: colorSet("plum", 100);		
+		color: colorSet("plum", 900);
+		border:1px solid rgba(colorSet("plum", 500), 1);		
+			
+		&:hover,
+		&:focus-visible {
+			background-color: #fff;
+			color: colorSet("plum", 800);
+			border-color:colorSet("plum", 400)
+		}
+
+		&:active {
+			background-color: colorSet("plum", 300);
+			color: colorSet("plum", 700);		
+			border-color: rgba(colorSet("plum", 900), 1);
+
+		}
+	}
+
+	&--tertiary {
+		background-color: transparent;
+		color: colorSet("plum", 900);
+		border:1px solid rgba(colorSet("ash", 200), 1);
+			
+		&:hover,
+		&:focus-visible {
+			background:colorSet("ash", 50);		
+			color:colorSet("plum", 500);
+		}
+
+		&:active {
+			background-color: colorSet("plum", 200);
+			color: colorSet("plum", 700);		
+			border-color: rgba(colorSet("plum", 900), 1);
+		}
+	}	
+
+	&--xsmall {
+		min-height:38px;
+		font-size: fontsize-px(200);
+		line-height: lineheight-px(200);		
+		// letter-spacing: letterspace-px(200);
+		padding: space-px(200) space-px(300);		
+	}
+
+	&--small {
+		font-size: fontsize-px(300);
+		line-height: lineheight-px(300);		
+		letter-spacing: letterspace-px(300);
+		padding: space-px(200) space-px(500);
+	}
+
+	&--large {
+		font-size: fontsize-px(300);
+		line-height: lineheight-px(300);
+		letter-spacing: letterspace-px(300);		
+		padding: space-px(300) space-px(500);
+	}
+
+	&--fw {
+		display:block;
+		width:100%;
+		text-align: center;
+	}
+
+	&--ib {
+		display:inline-block;
+		width:initial;
+		text-align:left;
+	}
+
+	@each $bpkey, $bpvalue in config.$token-mq {
+  	@include breakpoint($bpkey) {
+  		&--fw-\@#{$bpkey} {
+				display:block;
+				width:100%;
+				text-align: center;
+  		}
+
+  		&--ib-\@#{$bpkey} {
+				display:inline-block;
+				width:initial;
+				text-align:left;
+  		}  		
+  	}
+	}
+}
+

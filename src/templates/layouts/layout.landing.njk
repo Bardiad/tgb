@@ -1,0 +1,11 @@
+{% extends "_base.njk" %}
+
+{# load custom layout css here, don't forget to call {{ super() }} to load main css file #}
+{% block pageStyles %}
+  {{ super() }}
+{% endblock %}
+    
+{% block body %}
+  {% block main %}
+  {% endblock %}
+{% endblock %}

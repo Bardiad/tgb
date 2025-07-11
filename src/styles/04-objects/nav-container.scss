@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.o-nav-container {
+	display:flex;
+	gap: space-px(600);
+    align-items: center;
+    justify-content: center;	
+}

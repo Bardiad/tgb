@@ -1,0 +1,420 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+/* Resets and normalize */
+@use "02-generic" as generic;
+
+/* basic page elements */
+@use "03-elements" as elements;
+
+/* Layout objects */
+@use "04-objects" as objects;
+
+/* Custom components */
+@use "05-components" as components;
+
+/* Utilities and helper classes */
+@use "06-utilities" as utilities;
+
+/* Page specific styling */
+@use "07-pages" as pages;
+
+.o-rounded-container {
+	border-radius: radius-px(700);
+	background: colorSet("ash", 50);
+	border:1px solid colorSet("ash", 100);	
+	padding:1.5rem;
+	display:flex;
+	align-items:center;
+}
+
+
+.c-proclaim-copy {
+	font-size: fontsize-px(300);
+	line-height:125%;
+	color:colorSet("ash", 500);
+	font-weight:500;
+
+	&--lg {
+		font-size: fontsize-px(400);
+
+		// @include breakpoint("lg") {
+		// 	font-size:fontsize-px(500);
+		// }
+	}
+
+	&--lg-\@sm {
+		@include breakpoint ("sm") {
+			font-size: fontsize-px(400);			
+		}
+	}
+
+	&--lg-\@md {
+		@include breakpoint ("md") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@lg {
+		@include breakpoint ("lg") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xl {
+		@include breakpoint ("xl") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xxl {
+		@include breakpoint ("xxl") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xxxl {
+		@include breakpoint ("xxxl") {
+			font-size: fontsize-px(400);			
+		}		
+	}					
+}
+
+.c-key-task {
+	width:100%;
+	flex-grow:1;
+	padding: space-px(600);
+	border-radius: radius-px(600);
+	border:1px solid colorSet("ash", 100);
+	background: colorSet("ash", 50);
+
+	h3 {
+		font-weight:600;
+	}
+
+	@include breakpoint("lg") {
+		width:25%;
+		padding: space-px(800);		
+	}
+
+	&__num {
+		font-family: font("display"), Helvetica, Arial, sans-serif;
+		font-size: fontsize-px(700);
+		color:colorSet("plum", 500);
+		font-weight:800;
+		line-height:100%;
+
+		@include breakpoint("lg") {
+			font-size:fontsize-px(800);
+		}
+	}
+}
+
+.c-fancy-list {
+	list-style-type:none;
+
+	li {
+		padding:space-px(600) 0;
+		border-bottom:1px solid colorSet("ash", 200);
+
+		&:last-of-type {
+			border-bottom:0;
+		}
+		
+	}
+}
+
+.u-list-inside {
+	list-style-position:inside;
+}
+
+.u-list-outside {
+	list-style-position: outside;
+}
+
+.o-bleed-right-container {
+
+}
+
+.icon {
+	width:1.5rem;
+	height:1.5rem;
+	transition: transform .4s ease, color .4s ease;
+
+	&.is-rotated {
+		transform: rotate(180deg);
+	}	
+
+}
+
+.c-accordion-item {
+	border-bottom:1px solid colorSet("ash", 200);
+	width:100%;
+	
+	&__header {
+		display:flex;
+		justify-content:space-between;
+
+		font-size: 18px;
+		line-height:125%;
+		font-weight:500;
+		color:colorSet("ash", 900);
+
+		@include breakpoint("lg") {
+			font-size: fontsize-px(400);			
+		}
+	}
+
+	&__trigger {
+		display:flex;
+		justify-content: space-between;
+		background:transparent;
+
+		padding:space-px(400) space-px(300);
+		margin:space-px(200);
+		width:100%;
+		text-align:start;
+		
+		border-radius:radius-px(300);
+
+		.icon {
+			color: colorSet("ash", 500);
+		}
+
+		&:hover,
+		&.is-active,
+		&:focus-visible {
+			background:colorSet("ash", 50);
+			color:colorSet("plum", 500);
+
+			.icon { color:colorSet("plum", 500); }
+		}
+
+		&:active {
+			background:colorSet("ash", 100);
+			color:colorSet("plum", 900);
+		}
+
+		&:focus-visible {
+
+			.icon { color:colorSet("plum", 500); }
+		}
+
+		@include breakpoint("lg") {
+			padding:space-px(500) space-px(300);
+			margin:space-px(300);			
+		}		
+	}
+
+	&__panel {
+		padding:0 space-px(500) space-px(500);
+		font-size: fontsize-px(300);
+		line-height:140%;
+		color:colorSet("ash", 500);
+		font-weight:400;			
+
+		@include breakpoint("lg") {
+			//padding:0 space-px(500) space-px(300);
+		}
+	}
+}
+
+.c-accordion-group {
+
+	.c-accordion-item {
+
+		&:first-of-type {
+			border-top:1px solid colorSet("ash", 100);
+		}
+
+	}
+}
+
+.accordion-toggle-all {
+	//margin-left:auto;	
+	width:100%;
+
+	@include breakpoint("lg") {
+		margin-left:auto;
+		width:unset;
+	}
+}
+
+.c-aside {
+	border-radius: radius-px(400);
+	border:1px solid colorSet("ash", 100);
+	//background: colorSet("ash", 50);
+	padding:space-px(700);
+
+	.body-copy {
+		line-height:135%
+	}
+}
+
+.meta-list {
+	.body-copy {
+		line-height:120%;
+	}
+}
+
+.u-bg-blur {
+	backdrop-filter: blur(3px);
+}
+
+.u-inset-shadow-light {
+	box-shadow: inset 0 0 10px #fff;
+}
+
+.o-overflow-container {
+	width:100%;
+	overflow:hidden;
+
+	&__inner {		
+	min-width:780px;
+	overflow-x:auto;
+	}
+}
+
+.u-img-max-width {
+	max-width:100%;
+	height:auto;
+}
+
+.c-key-metrics {
+	display:flex;
+	flex-wrap:wrap;
+	width:100%;
+	align-self:start;
+	border:1px solid colorSet("ash", 300);
+	border-radius:radius-px(300);
+
+
+	&__item {
+
+		padding:space-px(500);
+		border-bottom:1px solid colorSet("ash", 300);
+
+
+		@include breakpoint("md") {
+			border-right:1px solid colorSet("ash", 300);
+			border-bottom:none;
+
+		}
+
+		&:last-of-type {
+
+			border-right:none;
+			border-bottom:none;
+		}
+	}
+
+	@include breakpoint("md") {
+		flex-wrap:nowrap;
+	}
+
+	@include breakpoint("xl") {
+		width:70%;
+	}
+}
+
+label {
+	font-size:fontsize-px(300);
+
+	& + input {
+		margin-top:space-px(100);
+	}
+}
+
+input {
+	padding:space-px(300);
+	border-radius:radius-px(300);
+	border:1px solid colorSet("ash", 200);
+}
+
+
+.download-form {
+	width:100%;
+	max-width:680px;
+
+	input { width:100%; }
+	button {width: 100%; }
+
+	@include breakpoint("lg") {
+		input {
+
+				max-width:40ch;
+				align-self:center;
+				height:48px;
+		}
+		button {
+			width:unset;
+			align-self:center;
+		}
+	}
+}
+
+
+.u-blend-multiply {
+	mix-blend-mode: multiply;
+}
+
+.case-study-illus {
+	max-width:240px;
+	height:auto;
+	mix-blend-mode:darken;
+	width:100%;
+	margin:0 auto;
+
+	@include breakpoint("lg") {
+		max-width:360px;
+	}
+}
+
+.c-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(colorSet("plum", 100), .65);;
+  backdrop-filter: blur(4px);
+  color:colorSet("plum", 700);
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 1000;
+
+  &:hover {
+  	background-color: rgba(colorSet("plum", 100), .45);
+  }
+
+  .icon {
+  	width:1rem;
+  	height:1rem;
+  }
+}
+
+.c-back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.c-back-to-top:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.c-para-end {
+	display:inline-block;
+	height:16px;
+	width:16px;
+	border-radius:2px;
+	background-color: colorSet("plum", 500);
+}

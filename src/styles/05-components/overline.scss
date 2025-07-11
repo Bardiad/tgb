@@ -1,0 +1,31 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-overline {
+	text-transform: uppercase;
+	font-size: fontsize-px(200);
+	line-height:100%;
+	font-weight:700;
+	color:colorSet("ash", 500);
+
+	&--fixed {
+		font-size:fontsize-px(200);
+		letter-spacing:-0.1px;		
+	}
+
+	&--fixed-large {
+		font-size: fontsize-px(300);
+		letter-space:0;		
+	}
+
+	&--fluid {
+		font-size:fontsize-px(200);
+		letter-space:-0.1px;
+
+		@include breakpoint("lg") {
+			letter-space:0;
+			font-size:fontsize-px(300);
+		}
+	}
+}

@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-taglist {
+	display:inline-flex;
+	list-style-type: none;
+	gap: space-px(200);
+	flex-wrap:wrap;
+	width:100%;
+
+
+	&__tag {
+		font-size: fontsize-px(100);
+		line-height: lineheight-px(100);
+		font-weight:700;
+		text-transform: uppercase;
+		background-color: colorSet("ash", 100);
+		border: 1px solid colorSet("ash", 300);
+		border-radius: radius-px(200);
+		padding:space-px(100) space-px(100);
+
+		@include breakpoint('sm') {
+			font-size: fontsize-px(200);
+			line-height: lineheight-px(200);			
+			padding:space-px(100) space-px(200);			
+		}
+}	
+}

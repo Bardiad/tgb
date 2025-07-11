@@ -1,0 +1,19 @@
+{
+	"project" : {
+		"source" : "/src",
+		"destination" : "/dist",
+		"watch": ["./src/**/*", "!./src/**/_index.scss"],
+		"inputs" : {
+			"scss" : ["./src/**/*.scss"],
+			"html" : ["./src/**/*.html"],
+			"js"   : ["./src/**/*.js"],
+			"img"  : ["./src/img/*"]
+		},
+		"outputs" : {
+			"css"  : "./dist/css/",
+			"html" : "./dist",
+			"js"   : "./dist/scripts",
+			"img"  : "./dist/img"  
+		}
+	}
+}

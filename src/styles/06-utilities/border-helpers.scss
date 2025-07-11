@@ -1,0 +1,66 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+@each $weight, $value in config.$token-stroke {
+	.u-border-width-#{$weight} {
+		border-width: #{$value}px;
+	}
+}
+
+@each $colorset, $set in config.$token-colorsets {
+	@each $step, $value in $set {
+		.u-border-color-#{$colorset}-#{$step} {
+			border:1px solid;
+			border-color:$value;
+		}
+
+		.u-border-color-t-#{$colorset}-#{$step} {
+			border-top:1px solid;
+			border-top-color:$value;
+		}
+
+		.u-border-color-b-#{$colorset}-#{$step} {
+			border-bottom:1px solid;
+			border-bottom-color:$value;
+		}				
+
+		.u-border-color-l-#{$colorset}-#{$step} {
+			border-left:1px solid;
+			border-left-color:$value;
+		}		
+
+		.u-border-color-r-#{$colorset}-#{$step} {
+			border-right:1px solid;
+			border-right-color:$value;
+		}		
+
+		.u-border-color-x-#{$colorset}-#{$step} {
+			border-left:1px solid;
+			border-right:1px solid;			
+			border-left-color:$value;
+			border-right-color:$value;
+		}		
+
+		.u-border-color-y-#{$colorset}-#{$step} {
+			border-top:1px solid;
+			border-bottom:1px solid;
+			border-top-color:$value;
+			border-bottom-color:$value;
+		}		
+	}
+}
+
+@each $key, $value in config.$token-radius {
+	.u-border-radius-#{$key} {
+		border-radius:#{$value}px;
+	}
+
+	@each $bpkey, $bpvalue in config.$token-mq {
+		@include breakpoint($bpkey) {
+			.u-border-radius-#{$key}-\@#{$bpkey} {
+				border-radius:#{$value}px;
+			}
+		}
+	}
+}

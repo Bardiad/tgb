@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.stylesheet {
+	 section { margin: space-px(800) 0; }
+}
+
+[class^="col-"] {
+ background-color: colorSet("plum", 100);
+}

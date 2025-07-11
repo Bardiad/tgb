@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-intro-wrapper {
+
+	&__subheading {
+		font-size: fontsize-px(300);
+		letter-spacing: letterspace-px(300);		
+		font-weight:500;
+		line-height:125%;
+		margin:0;
+
+		@include breakpoint("sm") {
+			font-size: fontsize-px(400);
+			letter-spacing: letterspace-px(400);
+		}
+
+		@include breakpoint("xl") {
+			font-size: fontsize-px(500);
+			letter-spacing: letterspace-px(500);
+		}		
+	}
+}

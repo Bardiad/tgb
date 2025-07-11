@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-horizontal-list {
+	display: inline-flex;
+	gap: space-px(300);
+
+	&--simple {
+		list-style-type:none;
+	}
+}

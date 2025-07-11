@@ -1,0 +1,311 @@
+@use "sass:map";
+@use "sass:math";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+$columns: 12;
+$spaces : map.get(config.$token-scales, "space");
+
+
+.u-auto-margin {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+//these apply to all breakpoints
+@each $step, $value in $spaces {
+
+  .u-padding-#{$step} {
+    padding:#{$value}px;
+  }
+
+  .u-padding-x-#{$step} {
+    padding-left:#{$value}px;
+    padding-right:#{$value}px;
+  }
+
+  .u-padding-y-#{$step} {
+    padding-top:#{$value}px;
+    padding-bottom:#{$value}px;
+  }
+
+  .u-padding-t-#{$step} {
+    padding-top:#{$value}px;
+  }
+
+  .u-padding-b-#{$step} {
+    padding-bottom:#{$value}px;
+  }
+
+  .u-padding-l-#{$step} {
+    padding-left:#{$value}px;
+  }
+
+  .u-padding-r-#{$step} {
+    padding-bottom:#{$value}px;
+  }
+
+  .u-margin-#{$step} {
+    margin:#{$value}px;
+  }
+
+  .u-margin-x-#{$step} {
+    margin-left:#{$value}px;
+    margin-right:#{$value}px;
+  }
+
+  .u-margin-y-#{$step} {
+    margin-top:#{$value}px;
+    margin-bottom:#{$value}px;
+  }
+
+  .u-margin-t-#{$step} {
+    margin-top:#{$value}px;
+  }
+
+  .u-margin-b-#{$step} {
+    margin-bottom:#{$value}px;
+  }
+
+  .u-margin-l-#{$step} {
+    margin-left:#{$value}px;
+  }
+
+  .u-margin-r-#{$step} {
+    margin-right:#{$value}px;
+  }  
+}
+
+.u-align-items-start {
+  align-items:start;
+}
+
+.u-align-items-end {
+  align-items:end;
+}
+
+.u-align-self-start {
+  align-self:flex-start;
+}
+
+.u-align-self-end {
+  align-self:flex-end;
+}
+
+.u-align-self-center {
+  align-self:center;
+}
+
+.u-align-items-center {
+  align-items:center;
+}
+
+.u-align-items-stretch {
+  align-items:stretch;
+}
+
+.u-justify-content-start {
+  justify-content:start;
+}
+
+.u-justify-content-end {
+  justify-content:end;
+}
+
+.u-justify-content-sb {
+  justify-content:space-between;
+}
+
+.u-justify-content-sa {
+  justify-content:space-around;
+}
+
+.u-justify-content-se {
+  justify-content:space-evenly;
+}
+
+.u-justify-content-stretch {
+  justify-content:stretch;
+}
+
+.u-justify-content-center {
+  justify-content:center;
+}
+
+.u-flex-grow-0 {
+  flex-grow:0;
+}
+
+.u-flex-grow-1 {
+  flex-grow:1;
+}
+
+.u-flex-shrink-0 {
+  flex-shrink:0;
+}
+
+.u-flex-shrink-1 {
+  flex-shrinkg:1;
+}
+
+
+@each $skey, $svalue in $spaces {
+  .gap-#{$skey} {
+    gap: #{$svalue}px;
+  }
+}
+
+@each $bpkey, $bpvalue in config.$token-mq {  
+  @include breakpoint($bpkey) {
+
+    @each $step, $value in $spaces {
+
+      .u-padding-#{$step}-\@#{$bpkey} {
+        padding:#{$value}px;
+      }
+
+      .u-padding-x-#{$step}-\@#{$bpkey} {
+        padding-left:#{$value}px;
+        padding-right:#{$value}px;        
+      }
+
+      .u-padding-y-#{$step}-\@#{$bpkey} {
+        padding-top:#{$value}px;
+        padding-bottom:#{$value}px;        
+      }
+
+      .u-padding-l-#{$step}-\@#{$bpkey} {
+        padding-left:#{$value}px;       
+      }  
+
+      .u-padding-r-#{$step}-\@#{$bpkey} {
+        padding-right:#{$value}px;      
+      }
+
+      .u-padding-t-#{$step}-\@#{$bpkey} {
+        padding-top:#{$value}px;       
+      }  
+
+      .u-padding-b-#{$step}-\@#{$bpkey} {
+        padding-bottom:#{$value}px;      
+      }      
+
+      .u-margin-#{$step}-\@#{$bpkey} {
+        margin:#{$value}px;
+      }
+
+      .u-margin-x-#{$step}-\@#{$bpkey} {
+        margin-left:#{$value}px;
+        margin-right:#{$value}px;        
+      }
+
+      .u-margin-y-#{$step}-\@#{$bpkey} {
+        margin-top:#{$value}px;
+        margin-bottom:#{$value}px;        
+      }
+
+      .u-margin-l-#{$step}-\@#{$bpkey} {
+        margin-left:#{$value}px;       
+      }  
+
+      .u-margin-r-#{$step}-\@#{$bpkey} {
+        margin-right:#{$value}px;      
+      }
+
+      .u-margin-t-#{$step}-\@#{$bpkey} {
+        margin-top:#{$value}px;       
+      }  
+
+      .u-margin-b-#{$step}-\@#{$bpkey} {
+        margin-bottom:#{$value}px;      
+      }                                     
+    }
+
+    .u-flex-\@#{$bpkey} {
+      display:flex;
+    }
+
+    .u-align-self-start-\@#{$bpkey} {
+      align-self:flex-start;
+    }
+
+    .u-align-self-end-\@#{$bpkey} {
+      align-self:flex-end;
+    }
+
+    .u-align-self-center-\@#{$bpkey} {
+      align-self:center;
+    }    
+
+    .u-align-items-start-\@#{$bpkey} {
+      align-items:start;
+    }
+
+    .u-align-items-end-\@#{$bpkey} {
+      align-items:end;
+    }
+
+    .u-align-items-center-\@#{$bpkey} {
+      align-items:center;
+    }
+
+    .u-align-items-stretch-\@#{$bpkey} {
+      align-items:stretch;
+    }
+
+    .u-justify-content-start-\@#{$bpkey} {
+      justify-content:start;
+    }
+
+    .u-justify-content-end-\@#{$bpkey} {
+      justify-content:end;
+    }
+
+    .u-justify-content-sb-\@#{$bpkey} {
+      justify-content:space-between;
+    }
+
+    .u-justify-content-sa-\@#{$bpkey} {
+      justify-content:space-around;
+    }
+
+    .u-justify-content-se-\@#{$bpkey} {
+      justify-content:space-evenly;
+    }
+
+    .u-justify-content-stretch-\@#{$bpkey} {
+      justify-content:stretch;
+    }
+
+    .u-justify-content-center-\@#{$bpkey} {
+      justify-content:center;
+    }
+
+    .u-flex-grow-0-\@#{$bpkey} {
+      flex-grow:0;
+    }
+
+    .u-flex-grow-1-\@#{$bpkey} {
+      flex-grow:1;
+    }
+
+    .u-flex-shrink-0-\@#{$bpkey} {
+      flex-shrink:0;
+    }
+
+    .u-flex-shrink-1-\@#{$bpkey} {
+      flex-shrinkg:1;
+    }
+
+  }  
+}
+
+@each $bpkey, $bpvalue in config.$token-mq {
+  @include breakpoint($bpkey) {
+      @each $skey, $svalue in $spaces {
+        .gap-#{$skey}-\@#{$bpkey} {
+          gap: #{$svalue}px;
+        }
+      }
+  }
+}

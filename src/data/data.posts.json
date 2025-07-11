@@ -1,0 +1,43 @@
+[
+	{
+		"slug": "questrade-content-strategy",
+		"headline": "Building scalable web experiences at Questrade",
+		"description": "I helped Questrade develop a scalable content and design strategy for the unique needs of their customer facing website, leading to increased user engagement and organic traffic.",
+		"thumbnail": "/img/case-thumbs/questrade-seo.png",
+		"tags": ["Content Strategy", "Information Architecture", "Visual Design"],
+		"year": 2024,
+		"theme" : "#227C20",
+		"comingSoon" : false
+	},
+	{
+		"slug": "marketing-design-system",
+		"headline": "Designing Questrades first website design system",
+		"description": "I led the creation of a design system for Questrade.com that brought visual consistency, improved design-to-dev collaboration, and helped us ship faster across the marketing site.",
+		"thumbnail": "/img/case-thumbs/questrade-design-system.png",
+		"tags": ["Design System", "Cross-functional collaboration", "Visual Design"],
+		"year": 2024,
+		"theme" : "#227C20",
+		"comingSoon" : true		
+	},
+	{
+		"slug": "CPA-member-news",
+		"headline": "Leveling up CPA Canada's member news email",
+		"description": "I designed and built an award-winning lifestyle-based search tool using rich demographic, psychographic, and location data. Instead of filtering by price or size, users explore custom neighbourhoods that reflect how they live.",
+		"thumbnail": "/img/case-thumbs/your-perfect-life.png",
+		"tags": ["Search Experience", "UX Design", "Visual Design"],
+		"year": 2020,
+		"theme" : "#EA002A",
+		"comingSoon" : true		
+	},  
+	{
+		"slug": "your-perfect-lift",
+		"headline": "Creating an award-winning search experience for Royal LePage",
+		"description": "I designed and built an award-winning lifestyle-based search tool using rich demographic, psychographic, and location data. Instead of filtering by price or size, users explore custom neighbourhoods that reflect how they live.",
+		"thumbnail": "/img/case-thumbs/your-perfect-life.png",
+		"tags": ["Search Experience", "UX Design", "Visual Design"],
+		"year": 2017,
+		"theme" : "#EA002A",
+		"comingSoon" : true		
+	}
+]
+

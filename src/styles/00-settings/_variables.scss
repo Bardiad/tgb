@@ -1,0 +1,13 @@
+@use "sass:map";
+@use 'tokens.colorsets' as *;
+@use 'tokens.mq' as *;
+@use 'tokens.radius' as *;
+@use 'tokens.scales' as *;
+@use 'tokens.stroke' as *;
+@use 'tokens.type' as *;
+
+$container-max-width: 1480px;
+$copyContainerWidth: 786px;
+$page-gutter-sm: #{map.get(map.get($scales, "space"), "500")}px;
+$page-gutter-lg: #{map.get(map.get($scales, "space"), "1000")}px; 
+

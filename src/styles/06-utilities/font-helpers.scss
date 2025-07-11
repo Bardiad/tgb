@@ -1,0 +1,86 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+$weights: 100, 200, 300, 400, 500, 600, 700, 800, 900;
+$fontSizes: map.get(config.$token-scales, "fontsize");
+$lineHeight: map.get(config.$token-scales, "lineheight");
+
+//Generate font weight utility classes
+@each $weight in $weights {
+	.u-font-weight-#{$weight} {
+		font-weight: $weight;
+	}
+}
+
+@each $step, $value in $fontSizes {
+	.u-font-size-#{$step} {
+		font-size:#{$value}px;
+	}
+}
+
+@each $step, $value in $lineHeight {
+	.u-line-height-#{$step} {
+		line-height:#{$value}px;
+	}
+}
+
+@each $step, $value in $fontSizes {
+	.u-typeset-#{$step} {
+		font-size:#{$value}px;
+		line-height: #{map.get($lineHeight, #{$step})}px;
+	}
+}
+
+@each $colorset, $set in config.$token-colorsets {
+	@each $step, $value in $set {
+		.u-color-#{$colorset}-#{$step} {
+			color:$value;
+		}
+	}
+}
+
+
+@each $bpkey, $bpvalue in config.$token-mq {
+  @include breakpoint($bpkey) {
+		.u-text-align-left-\@#{$bpkey} {
+		  text-align: left;
+		}
+
+		.u-text-align-right-\@#{$bpkey} {
+		  text-align:right;
+		}
+
+		.u-text-align-center-\@#{$bpkey} {
+		  text-align:center;
+		}
+	}
+}
+
+.u-text-align-left {
+  text-align: left;
+}
+
+.u-text-align-right {
+  text-align:right;
+}
+
+.u-text-align-center {
+  text-align:center;
+}
+
+.u-text-bold {
+  font-weight:700;
+}
+
+.u-text-semibold {
+  font-weight:600;
+}    
+
+.u-text-italic {
+  font-style:italic;
+} 
+
+.u-text-underline {
+	text-decoration:underline;
+} 

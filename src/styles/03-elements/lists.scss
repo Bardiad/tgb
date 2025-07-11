@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+ul, ol {
+	list-style-position:inside;
+
+	li::marker {
+		margin-right:5px;
+	}
+
+
+}
+
+dl {
+
+}
+
+
+dt {
+	font-weight:600;
+	font-size: fontsize-px(300);
+}
+dd {
+	font-size: fontsize-px(200);
+}
+

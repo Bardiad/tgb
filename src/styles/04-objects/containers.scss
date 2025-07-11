@@ -1,0 +1,103 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.o-main-container {
+	// flex: 1 0 auto;
+	// width:100%;
+	background:colorSet("misc", "white");
+}
+
+
+.o-container {
+	width:100%;
+	max-width:config.$container-max-width;
+	padding:0 config.$page-gutter-sm;
+	margin:0 auto;
+
+	@include custombp(895){
+		padding:0 config.$page-gutter-lg;		
+	}
+
+	&--fluid-width {
+		max-width:unset !important;
+	}
+
+	&--full-bleed {
+		padding-left:0;
+		padding-right:0;
+	}
+
+	&--bleed-right {
+
+	}
+}
+
+.right-container {
+	padding-left:0;
+	margin-left:0;
+	width:100%;
+
+	@include breakpoint("lg") {
+		margin-left: calc(33.3333% + #{space-px(700)});
+		width: calc((100% - #{space-px(700)}) * 0.666666);
+	}
+}
+
+
+.background-image-women {
+	background-image:url("../img/women-with-baby.jpg");
+	background-size:cover;
+	min-height:600px;
+}
+
+
+
+/* DEPRICATED: DO NOT USE
+   Use o-container and modifier classes instead */
+.o-max-width-container {
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	margin:0 auto;
+
+	width:100%;
+	max-width:config.$container-max-width;
+	padding:0 config.$page-gutter-sm;
+
+	@include custombp(895){
+		padding:0 config.$page-gutter-lg;		
+	}
+}
+
+.o-fluid-width-container {
+	width:100%;
+	padding:0 config.$page-gutter-sm;
+
+	@include custombp(895){
+		padding:0 config.$page-gutter-lg;		
+	}	
+}
+
+.o-narrow-width-container {
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	width:100%;
+	max-width:config.$copyContainerWidth;
+}
+
+.o-center-wrapper--row {
+	flex-direction:row;
+}
+
+
+.u-img-crisp {
+  image-rendering: -moz-crisp-edges; /* Firefox */
+  image-rendering: -o-crisp-edges; /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */	
+}
+
+

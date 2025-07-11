@@ -1,0 +1,7 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-case-study-intro {
+	align-self:flex-start;
+}

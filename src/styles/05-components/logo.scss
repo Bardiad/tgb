@@ -1,0 +1,56 @@
+@use "sass:map";
+@use "sass:string";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-logo {
+
+	width: 100%; 
+	text-align: center;
+	margin-bottom:space-px(300);
+
+	a {
+		text-decoration:none;
+		color: colorSet("plum", 500);
+		font-family: font("display"), Arial, sans-serif;
+		font-size: fontsize-px(400);
+		line-height: 100%;	
+		font-weight: 800;
+		margin-right: space-px(0);
+		border-radius: radius-px(400);
+
+		@include custombp(480) {
+			font-size: fontsize-px(500);
+		}
+
+		@include custombp(895) {
+			font-size: fontsize-px(700);
+		}		
+	}
+
+	@include custombp(320) {
+		width: initial; 
+		text-align: left;
+		margin-bottom:space-px(0);			
+	}
+
+}
+
+.c-logo--footer {
+	margin-bottom: space-px(500);
+	text-align:left;
+
+	a {
+		@include custombp(320) {
+
+		}
+
+		@include custombp(480) {
+		}
+
+		@include custombp(895) {
+			font-size: fontsize-px(600);			
+		}
+	}
+
+}

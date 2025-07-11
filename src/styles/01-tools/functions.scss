@@ -1,0 +1,132 @@
+@use "sass:map";
+@use "sass:math";
+@use "../00-settings" as config;
+
+$baseFontSize: 16;
+
+@function convert-pxToRem($value) {
+	$result : math.div($value, $baseFontSize) + rem;
+	@return $result;
+}
+
+@function getScale($category, $key) {  
+  $scaleMap: map.get(config.$token-scales, $category);
+
+  @if not $scaleMap {
+    @error "Unknown scale category `#{$category}`.";
+  }
+
+  @return map.get($scaleMap, #{$key});
+}
+
+@function space($key) {
+  @return getScale("space", $key);
+}
+
+@function space-px($key) {
+  @return #{space($key)}px;
+}
+
+@function space-rem($key) {
+  @return convert-pxToRem(space($key));
+}
+
+@function size($key) {
+  @return getScale("size", $key);
+}
+
+@function size-px($key) {
+  @return #{size($key)}px;
+}
+
+@function size-rem($key) {
+  @return convert-pxToRem(size($key));
+}
+
+@function font($key) {
+  @return map.get(map.get(config.$token-type, "font"), "#{$key}");
+}
+
+@function fontsize($key) {
+  @return getScale("fontsize", $key);
+}
+
+@function fontsize-px($key) {
+  @return #{fontsize($key)}px;
+}
+
+@function fontsize-rem($key) {
+  @return convert-pxToRem(fontsize($key));
+}
+
+@function lineheight($key) {
+  @return getScale("lineheight", $key);
+}
+
+@function lineheight-px($key) {
+  @return #{lineheight($key)}px;
+}
+
+@function lineheight-rem($key) {
+  @return convert-pxToRem(lineheight($key));
+}
+
+@function letterspace($key) {
+    @return getScale("letterspace", $key);
+}
+
+@function letterspace-px($key) {
+  @return #{letterspace($key)}px;
+}
+
+@function radius($key) {
+  @return map.get(config.$token-radius, "#{$key}");
+}
+
+@function radius-px($key) {
+  @return #{radius($key)}px
+}
+
+@function radius-rem($key) {
+  @return convert-pxToRem(radius($key));
+}
+
+@function colorSet($colorName, $colorStep) {
+  @return map.get(map.get(config.$token-colorsets, "#{$colorName}"), "#{$colorStep}");    
+}
+
+@mixin breakpoint($key, $type: min) {
+  $mq-map: config.$token-mq;
+
+  @if not map.has-key($mq-map, $key) {
+    @error "Unknown breakpoint `#{$key}`. Available keys: #{map.keys($mq-map)}";
+  }
+
+  $width: map.get($mq-map, $key);
+
+  @if $type == min {
+    @media screen and (min-width: #{$width}px) {
+      @content;
+    }
+  } @else if $type == max {
+    @media screen and (max-width: #{$width}px) {
+      @content;
+    }
+  } @else {
+    @error "Unknown media type `#{$type}`. Use `min` or `max`.";
+  }
+}
+
+@mixin custombp($value, $type:min) {
+  @if $type == min {
+    @media screen and (min-width: #{$value}px) {
+      @content;
+    }
+  } @else if $type == max {
+    @media screen and (max-width: #{$value}px) {
+      @content;
+    }
+  }  @else {
+      @error "Unknown media type `#{$type}`. Use `min` or `max`.";
+  }
+}

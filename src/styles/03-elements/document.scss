@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+html {
+	height:100%;
+}
+
+body {
+	line-height: 1.5;
+	// display:flex;
+	// min-height:100%;
+	// flex-flow:column;
+	// align-items:center;
+	font-family: font("body"), Arial, sans-serif;
+	color:colorSet("plum", 900);
+	background-color:colorSet("ash", 200);
+}
+
+a,
+button,
+input,
+selece,
+textarea,
+summary,
+[tabindex],
+[contenteditable] {
+	&:focus-visible {
+		outline: 2px solid colorSet("plum", 500);
+		outline-offset: 2px;		
+	}
+}

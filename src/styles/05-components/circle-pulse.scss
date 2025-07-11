@@ -1,0 +1,69 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-circle-pulse {
+	position: relative;
+	width: 14px;
+	height: 14px;
+
+	&__main {
+		width: 100%;
+		height: 100%;
+		background-color: colorSet("mint", 500);
+		border-radius: 50%;
+		position: relative;
+		z-index: 2;
+	}
+
+	&__fill,
+	&__outline {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		z-index: 1;
+		animation-duration: 2s;
+		animation-timing-function: ease-out;
+		animation-iteration-count: infinite;
+	}
+
+	&__fill {
+		background-color: colorSet("mint", 500);
+		opacity: 0.5;
+		animation-name: pulseFill;
+	}	
+
+	&__outline {
+		border: 2px solid colorSet("mint", 500);
+		background-color: transparent;
+		opacity: 0.8;
+		animation-name: pulseOutline;
+		animation-delay: .2s; /* 200ms delay */
+	}
+}
+
+/* Keyframes */
+@keyframes pulseFill {
+	0% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(2.5);
+		opacity: 0;
+	}
+}
+
+@keyframes pulseOutline {
+	0% {
+		transform: scale(1);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}

@@ -1,0 +1,57 @@
+{# macros/components.njk #}
+{%  macro accordionItem(id, heading, content) %}
+
+	<div class="c-accordion-item">
+		<h3 class="c-accordion-item__header">
+			<button
+				class="c-accordion-item__trigger"
+				aria-expanded="false"
+				aria-controls="{{ id }}-panel"
+				id="{{ id }}-trigger">
+				<span>{{ heading | safe }}</span>
+				<svg class="icon"><use href="#chevron-down"></use></svg>			
+			</button>
+		</h3>
+
+		<div
+		id="{{ id }}-panel"
+		class="c-accordion-item__panel"
+		role="region"
+		aria-labelledby="{{ id }}-trigger"
+		hidden >
+			{{ content | safe }}
+		</div>
+	</div>	
+{% endmacro %}
+
+{% macro accordionGroup(id, items) %}
+	<div class="c-accordion-group" data-accordion-group id="{{ id }}">
+		{% set panel_ids = "" %}
+		{% for item in items %}
+		  {% set panel_ids = panel_ids + item.id + "-panel " %}
+		{% endfor %}
+		
+
+
+		{% for item in items %}
+			{{ accordionItem(item.id, item.title, item.content) }}
+		{% endfor %}
+
+		<div class="u-flex u-margin-t-500">
+			<button
+				data-accordion-toggle 
+				class="accordion-toggle-all c-button c-button--tertiary c-button--xsmall" 
+				aria-expanded="false"
+				aria-controls="{{ panel_ids }}">
+				Expand All
+			</button>			
+		</div>
+	</div>
+{% endmacro %}
+
+{% macro backToTop() %}
+<a href="#top" class="c-back-to-top" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#chevron-up" /></svg>
+  <span class="c-back-to-top__label">Back to top</span>
+</a>
+{% endmacro %}

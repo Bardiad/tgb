@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-global-footer {
+	background-color: colorSet("ash", 100);
+	width:100%;
+}

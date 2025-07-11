@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+
+.open-to-work {
+	width:100%;
+
+	@include breakpoint("md") {
+		width:unset;
+	}
+}
+.c-open-to-work {
+	display:flex;
+	align-items:start;
+
+	&__label {
+		margin-bottom:0;
+		font-size:14px;
+		line-height:100%;
+
+		@include breakpoint("md") {
+			font-size:16px;
+		}
+	}
+
+}
+
+.c-circle-pulse {
+	margin-top:2px;
+}
+.c-open-to-work__roles {
+	font-size:12px;
+	line-height:125%;
+	margin-top:4px;
+
+	@include breakpoint("md") {
+		font-size:14px;
+	}		
+}

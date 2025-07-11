@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-intro-portrait {
+	img, figcaption {
+		max-width:320px;
+		
+		@include breakpoint("xl"){
+			max-width:472px;
+		}
+	}
+}
+
+.c-portriat-wrapper {
+	img {
+		max-width:540px;
+		margin:0 auto;
+	}
+}

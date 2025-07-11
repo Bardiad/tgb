@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+// Fluid images
+.o-fluid-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+figcaption {
+  font-style:italic;
+  font-weight:400;
+  font-size: fontsize-px(200);
+  margin-top: space-px(300);
+  line-height:125%;
+}

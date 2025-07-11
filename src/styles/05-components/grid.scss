@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "sass:math";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+
+$gutter: 32px;
+$outer-margin: 40px;
+$columns: 12;
+$spaces : map.get(config.$token-scales, "space");
+
+.c-grid {
+	display:grid;
+	grid-template-columns: repeat($columns, 1fr);
+	column-gap: $gutter;
+}
+
+
+
+@each $bpkey, $bpvalue in config.$token-mq {
+	@include breakpoint($bpkey) {
+  		@for $i from 1 through $columns {
+	  		.col-#{$i}-\@#{$bpkey} {
+	    		grid-column: auto / span #{$i};
+	  	
+	  		}  		
+  		}
+	}
+}
+
+
+

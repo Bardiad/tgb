@@ -1,0 +1,36 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-primary-nav {
+	list-style:none;
+  	display: flex;
+  	align-items: center;
+	
+	li {
+		display:inline-block;
+		padding-right: space-px(500);
+
+		&:last-of-type {
+			padding-right:0;
+		}
+
+		a {
+			font-size: 20px;
+			line-height: 100%;
+			padding: space-px(200) 0;			
+			text-decoration:none;
+			color:colorSet("ash", 900);
+			display:block;
+			font-weight:500;
+			cursor:pointer;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		@include custombp(895) {
+		}		
+	}
+}
