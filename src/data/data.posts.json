@@ -22,10 +22,10 @@
 	{
 		"slug": "CPA-member-news",
 		"headline": "Leveling up CPA Canada's member news email",
-		"description": "I designed and built an award-winning lifestyle-based search tool using rich demographic, psychographic, and location data. Instead of filtering by price or size, users explore custom neighbourhoods that reflect how they live.",
-		"thumbnail": "/img/case-thumbs/your-perfect-life.png",
+		"description": "I redesigned CPA Canada’s Member News newsletter with a trust-focused layout, responsive design, and a new build process that cut production time in half by bringing it in-house.",
+		"thumbnail": "/img/case-thumbs/cpa-member-news.png",
 		"tags": ["Search Experience", "UX Design", "Visual Design"],
-		"year": 2020,
+		"year": 2022,
 		"theme" : "#EA002A",
 		"comingSoon" : true		
 	},  
