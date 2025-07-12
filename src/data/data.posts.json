@@ -11,10 +11,10 @@
 	},
 	{
 		"slug": "marketing-design-system",
-		"headline": "Designing Questrades first website design system",
+		"headline": "Designing Questrades first marketing design system",
 		"description": "I led the creation of a design system for Questrade.com that brought visual consistency, improved design-to-dev collaboration, and helped us ship faster across the marketing site.",
 		"thumbnail": "/img/case-thumbs/questrade-design-system.png",
-		"tags": ["Design System", "Cross-functional collaboration", "Visual Design"],
+		"tags": ["Design System", "XFN collaboration", "Visual Design"],
 		"year": 2024,
 		"theme" : "#227C20",
 		"comingSoon" : true		
@@ -22,9 +22,9 @@
 	{
 		"slug": "CPA-member-news",
 		"headline": "Leveling up CPA Canada's member news email",
-		"description": "I redesigned CPA Canada’s Member News newsletter with a trust-focused layout, responsive design, and a new build process that cut production time in half by bringing it in-house.",
+		"description": "I redesigned CPA Canada’s Member News newsletter with a layout focused on building trust, responsive design, and a new build process that cut production time in half by bringing it in-house.",
 		"thumbnail": "/img/case-thumbs/cpa-member-news.png",
-		"tags": ["Search Experience", "UX Design", "Visual Design"],
+		"tags": ["Email Design", "Front End Dev", "Visual Design"],
 		"year": 2022,
 		"theme" : "#EA002A",
 		"comingSoon" : true		
