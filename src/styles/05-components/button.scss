@@ -19,7 +19,7 @@ input[type="submit"] {
   cursor: pointer;
   appearance: none;
   background-color: colorSet("ash", 100);
-  padding: 0.5em 1em;
+  padding:0.75rem 1.5rem;
   border-radius:  radius-px("rounded");
   transition: background-color .4s ease, color .4s ease, border-color .4s ease;
   white-space:nowrap;
@@ -77,7 +77,7 @@ input[type="submit"] {
 	font-weight:500;
   white-space:nowrap;
   overflow: hidden; 
-  padding:0.75rem 1rem;
+  padding:0.75rem 1.5rem;
 
 	&:hover, &:focus-visible { 
 		cursor:pointer;
@@ -119,9 +119,9 @@ input[type="submit"] {
 			
 		&:hover,
 		&:focus-visible {
-			background-color: #fff;
+			background-color: transparent;
 			color: colorSet("plum", 800);
-			border-color:colorSet("plum", 400)
+			border-color:colorSet("plum", 400);
 		}
 
 		&:active {

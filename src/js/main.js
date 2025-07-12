@@ -1,4 +1,4 @@
-import { greet } from './utils/example.js';
+//import { attachConfettiEffect } from './confetti.js';
 
 // DOM Ready utility
 function onDOMReady(callback) {
@@ -24,8 +24,10 @@ onDOMReady(() => {
 
   //To do: make these composable  
 
+
   // Confetti Button
-  const conffettiButton = document.getElementById('getResume');
+
+  const confettiButtons =  document.querySelectorAll(".js-confetti");
   const confettiContainer = document.getElementById('confettiContainer');
 
   //Don't make this too much or it might slow down some devices
@@ -33,48 +35,50 @@ onDOMReady(() => {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  conffettiButton.addEventListener('click', (e) => {
-    if (prefersReducedMotion) return;
+  confettiButtons.forEach((button) => {
+    button.addEventListener('click', (e) =>{
+      if (prefersReducedMotion) return;
 
-    // const rect = button.getBoundingClientRect();
-    // const originX = rect.left + rect.width / 2;
-    // const originY = rect.top + window.scrollY + rect.height / 2;
+      // const rect = button.getBoundingClientRect();
+      // const originX = rect.left + rect.width / 2;
+      // const originY = rect.top + window.scrollY + rect.height / 2;
 
-    //origin is at center of user pointer event, instead of center of button
-    const originX = e.clientX;
-    const originY = e.clientY + window.scrollY;    
+      //origin is at center of user pointer event, instead of center of button
+      const originX = e.clientX;
+      const originY = e.clientY + window.scrollY;    
 
-    for (let i = 0; i < confettiDensity; i++) {
+      for (let i = 0; i < confettiDensity; i++) {
 
-      //create new confetti particles, give them a class (for styling)
-      const confetti = document.createElement('div');
-      confetti.classList.add('confetti');
+        //create new confetti particles, give them a class (for styling)
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
 
-      // Set color within purple range
-      confetti.style.setProperty('--saturation', `${50 + Math.random() * 30}%`);
-      confetti.style.setProperty('--lightness', `${50 + Math.random() * 20}%`);
-      confetti.style.setProperty('--duration', `${800 + Math.random() * 400}ms`);
+        // Set color within purple range
+        confetti.style.setProperty('--saturation', `${50 + Math.random() * 30}%`);
+        confetti.style.setProperty('--lightness', `${50 + Math.random() * 20}%`);
+        confetti.style.setProperty('--duration', `${800 + Math.random() * 400}ms`);
 
-      // Calculate circular explosion direction
-      const angle = Math.random() * 2 * Math.PI;
-      const radius = 80 + Math.random() * 40; // travel distance
-      const x = Math.cos(angle) * radius;
-      const y = Math.sin(angle) * radius;
+        // Calculate circular explosion direction
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 80 + Math.random() * 40; // travel distance
+        const x = Math.cos(angle) * radius;
+        const y = Math.sin(angle) * radius;
 
-      //store final location of confetti in css property
-      confetti.style.setProperty('--x', `${x}px`);
-      confetti.style.setProperty('--y', `${y}px`);
+        //store final location of confetti in css property
+        confetti.style.setProperty('--x', `${x}px`);
+        confetti.style.setProperty('--y', `${y}px`);
 
-      // Start position at button center
-      confetti.style.left = `${originX}px`;
-      confetti.style.top = `${originY}px`;
+        // Start position at button center
+        confetti.style.left = `${originX}px`;
+        confetti.style.top = `${originY}px`;
 
-      confettiContainer.appendChild(confetti);
+        confettiContainer.appendChild(confetti);
 
-      setTimeout(() => {
-        confetti.remove();
-      }, 1400);
-    }
+        setTimeout(() => {
+          confetti.remove();
+        }, 1400);
+      }
+    });
   });
 
   //Accordion Functionality

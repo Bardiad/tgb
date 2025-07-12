@@ -7,10 +7,10 @@
 }
 .c-post {
 	align-items: flex-start;
-	margin-bottom:space-px(700);
+	margin-bottom:space-px(1000);
 
 	@include breakpoint("xl") {
-		margin-bottom: space-px(1500);
+		margin-bottom: space-px(2000);
 	}
 
 	&:last-of-type {
@@ -68,17 +68,24 @@
 
 	&__cs-label {    	
 		position:absolute;
-		top:24px;
-		left:24px;
+		top:16px;
+		left:16px;
 		//transform: translate(-50%, -50%);
 		font-weight:500;
 		color:colorSet("plum", 500);
-		font-size:14px;
-		padding:.25rem .75rem;
+		font-size:12px;
+		padding:.25rem .5rem;
 		font-style:italic;
 		border-radius:radius-px(200);
 		background:colorSet("plum", 100);
 		border:1px solid colorSet("plum", 200);
+
+		@include breakpoint("lg") {
+			top:24px;
+			left:24px;
+			font-size:14px;					
+			padding:.25rem .75rem;		
+		}
 
 	}
 
@@ -93,5 +100,13 @@
 	}
 }
 
+.c-portrait {
+	max-width:280px;
+	margin:0 auto;
+}
 
-
+.c-portrait-caption {
+	max-width:280px;
+	margin:0 auto;
+	margin-top:space-px(300);
+}

@@ -8,9 +8,9 @@ PAGE:
 
 {% block body %}
 {{ super()}}
-<section id="hero" class="u-bg-color-ash-100 u-background-gradient u-padding-t-600-@xs u-padding-b-800-@xs u-padding-t-900-@xl u-padding-b-1600-@xl">
+<section id="hero" class="u-bg-color-ash-100 u-background-gradient u-padding-t-600-@xs u-padding-b-800-@xs u-padding-t-900-@xl u-padding-b-1100-@xl">
 	<div class="o-container">
-		<div class="u-flex flex-wrap-@xs flex-nowrap-@xl gap-500 gap-0-@lg u-align-items-center-@lg">
+		<div class="u-flex flex-wrap-@xs flex-nowrap-@xl gap-900 gap-0-@lg gap-300-@xl u-align-items-center-@lg">
 			<div class="c-intro-wrapper w-100 w-50-@lg w-60-@xl">
 				<div class="c-inter-wrapper__inner u-text-align-left-@xs">
 
@@ -32,15 +32,19 @@ PAGE:
 					<h1 class="display-3">I’m Bardia, a <span class="text-highlight">design leader</span>, with over a decade of experience in <span class="text-highlight">SaaS platforms</span>, <span class="text-highlight">fintech</span> and <span class="text-highlight">non-profit</span> industries.
 					</h1>
 
-					<p class="c-intro-wrapper__subheading u-margin-t-300 w-100 w-80-@xxl u-margin-b-600">I specialize in systems thinking, scalable design strategies and building conversion optimized experiences.</p>
+					<p class="c-intro-wrapper__subheading u-margin-t-300 w-100 w-80-@xxl u-margin-b-600 u-margin-b-900-@lg">I specialize in systems thinking, scalable design strategies and building conversion optimized experiences.</p>
 
-					<a href="mailto:bardiad@gmail.com" class="c-button c-button--primary">Get in touch</a>
+					<div class="c-button-group flex-wrap flex-wrap">
+						<a href="mailto:bardiad@gmail.com" class="c-button c-button--primary js-confetti">Get in touch</a>
+						<a href="bardia-doust-2025-resume.pdf" download class="c-button c-button--secondary js-confetti">Download my resume (PDF)</a>
+					</div>
 
 
 				</div>
 			</div>
 			<div class="c-portriat-wrapper w-100 w-50-@lg w-40-@xl">
 				<img class="o-fluid-img"
+				alt="Stylized illustration of me working at my desk"
 				srcset="/img/halftone-desk-portrait.png 1x, /img/halftone-desk-portrait@2x.png 2x"
 				src="/img/halftone-desk-portrait.png"/>
 			</div>
@@ -48,7 +52,7 @@ PAGE:
 	</div>
 </section>
 
-<section id="projects" class="c-posts u-bg-color-misc-white u-padding-y-800-@xs u-padding-y-1500-@xl">
+<section id="projects" class="c-posts u-bg-color-misc-white u-padding-y-1000 u-padding-y-1500-@xl">
 	<div class="o-container">
 		<h2 class="u-margin-b-900-@xl u-margin-b-600-@xs w-100">Selected works</h2>
 		{% for post in data.POSTS %}
@@ -71,33 +75,90 @@ PAGE:
 				</div>
 
 				{% if post.comingSoon %}
-				<div class="c-post__cs-wrapper u-block w-100-@xs w-50-@lg w-60-@xxl flex-order-first-@xs flex-order-0-@lg">
+				<div class="c-post__cs-wrapper u-border-color-ash-200 u-block w-100-@xs w-50-@lg w-60-@xxl flex-order-first-@xs flex-order-0-@lg">
 					<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" class="o-fluid-img c-post__thumbnail"/>
 					<div class="c-post__thumbnail-overlay"></div>
 					<p class="c-post__cs-label">Coming soon</p>
 				</div>
 				{% else %}
-				<a href="/case-studies/{{ post.slug }}.html" class="u-block w-100-@xs w-50-@lg w-60-@xxl c-post__thumbnail-link flex-order-first-@xs flex-order-0-@lg" style="--thumbHover: {{ post.theme }}">
-					<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" class="o-fluid-img c-post__thumbnail"/>
+				<a href="/case-studies/{{ post.slug }}.html" class="u-block w-100-@xs w-50-@lg w-60-@xxl c-post__thumbnail-link flex-order-first-@xs flex-order-0-@lg u-border-color-ash-200" style="--thumbHover: {{ post.theme }}">
+					<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" width="850" height="552" class="o-fluid-img c-post__thumbnail"/>
 				</a>
 				{% endif %}				
 			</article>
 		{% endfor %}
 
-		<article class="c-coming-soon w-100-@xs u-padding-700 u-bg-color-ash-100 u-border-radius-500">
+		{#<article class="c-coming-soon w-100-@xs u-padding-700 u-bg-color-ash-100 u-border-radius-500">
 			<h3 class="u-margin-b-200">More projects coming soon</h3>
 			<p class="u-margin-b-0 w-80-@lg w-60-@xl">Thanks for your patience while I add more case studies to my portfolio. In the meantime you can check out <a href="/old">my previous portfolio</a> to see my work from 2015-2019.</p> 
-		</article>
+		</article> #}
 	</div>
 </section>
  
-<section id="about" class="c-about u-bg-color-misc-white u-padding-b-800-@xs">
-	<div class="o-container">
-		<h2 class="u-margin-b-900-@xl u-margin-b-600-@xs w-100">Who is that guy Bardia?</h2>
-		<div class="c-intro-portrait">
-			<figure class="u-flex  flex-dir-col u-align-items-center">
-			<img width="320" height="321" class="o-fluid-img" src="img/halftone-portrait.png" alt="Stylized portrait of me (Bardia Doust)" />
+<section id="about" class="c-about u-bg-color-misc-white">
+	<div class="o-container u-padding-y-1000 u-padding-y-1500-@xl u-border-color-t-ash-200">
+
+		<div class="u-flex flex-wrap flex-nowrap-@md gap-600 gap-900-@lg">
+			
+			<figure class="w-100 w-50-@md w-30-@lg">
+				<img
+				width="320"
+				height="321"
+				class="o-fluid-img c-portrait"
+				srcset="/img/halftone-portrait.png 1x, /img/halftone-portrait@2x.png 2x"
+				src="img/halftone-portrait.png"
+				alt="Stylized portrait of me (Bardia Doust)" />
+		
+				<figcaption class="c-portrait-caption">I'm a former graphic designer and front-end developer who has been working in UX for the past 10 years. I don't really have purple hair though.</figcaption>
 			</figure>
+			<div class="w-100 w-50-@md w-70-@lg u-order-first-@xs u-order-2-@md">
+				
+				<h2 class="u-margin-b-300">Who is that guy Bardia?</h2>				
+				<p class="body-copy body-copy--large u-margin-b-600 w-80-@lg">I graduated from the Ontario College of Art in Design, with a degree in graphic design. After graduating I worked as a print designer and front-end developer before moving into UX design.</p>
+
+				<p class="body-copy body-copy--large u-margin-b-600 w-80-@lg">Along the way, I’ve mentored aspiring designers through BrainStation’s UX bootcamp, which deepened my love for teaching and team-building.</p>
+
+
+				<figure class="w-80-@lg u-margin-b-600">
+					<img
+					width="740"
+					height="555"
+					class="o-fluid-img u-border-radius-400"
+					srcset="/img/mybooks.jpg 1x, /img/mybooks@2x.jpg 2x"
+					src="/img/mybooks.jpg"
+					alt="My humble book collection" />
+			
+					<figcaption>Favourite books from my humble collection</figcaption>
+				</figure>	
+
+				<p class="body-copy body-copy--large u-margin-b-600 w-80-@lg">3 years ago I moved to beautiful Kingston, Ontario, where I split my time between design work, creative projects, and wandering through bookstores promising myself I won't buy anything.</p>				
+
+				<p class="body-copy body-copy--large u-margin-b-600 w-80-@lg">Outside of work, I spend time playing guitar, bass, and drums, or out with my camera chasing texture and light. </p>
+
+				<figure class="w-80-@lg u-margin-b-600">
+					<img
+					width="740"
+					height="555"
+					class="u-img-max-width u-border-radius-400"
+					srcset="/img/myband.jpg 1x, /img/myband@2x.jpg 2x"
+					src="/img/mybooks.jpg"
+					alt="Me performing with one of my bands in 2018" />
+			
+					<figcaption>2017, Performing with one of the bands I played in at The 460 in Toronto</figcaption>
+				</figure>
+
+				<p class="body-copy body-copy--large u-margin-b-600 w-80-@lg">If you're curious about working together or just want to connect, feel free to reach out. <span class="c-para-end" aria-hidden="true"></span></p>
+			</div>
+		</div>
+
+		<div class="u-flex flex-wrap flex-nowrap-@md gap-600 gap-900-@lg">
+			<div class="w-100 w-50-@md w-30-@lg" aria-hidden="true"></div>
+			<div class="w-100 w-50-@md w-70-@lg">
+				<div class="c-button-group flex-wrap flex-wrap">
+					<a href="mailto:bardiad@gmail.com" class="c-button c-button--primary js-confetti">Get in touch</a>
+					<a href="bardia-doust-2025-resume.pdf" download class="c-button c-button--secondary js-confetti">Download my resume (PDF)</a>
+				</div>				
+			</div>
 		</div>
 	</div>	
 </section>

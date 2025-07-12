@@ -418,3 +418,18 @@ input {
 	border-radius:2px;
 	background-color: colorSet("plum", 500);
 }
+
+.c-button-group {
+	display:flex;
+	gap:space-px(300);
+	align-items:center;
+
+	.c-button {
+		width:100%;
+		text-align:center;
+
+		@include breakpoint("lg") {
+			width:unset;
+		}
+	}
+}
