@@ -45,21 +45,26 @@
 		background-color: colorSet("ash", 100);
 		position:relative;
 		border-radius: radius-px(500);	
-				overflow:hidden;	
+		overflow:hidden;
+
+		img {
+			filter:grayscale(1);
+		}
 	}
 
-	&__thumbnail-overlay {
-		position:absolute;
-		top:0;
-		left:0;
-		bottom:0;
-		right:0;
-		background: #ffffff;
-		background: linear-gradient(0deg,rgba(255,255,255, 1) 0%, rgba(255,255,255, 0.31) 100%);
-		backdrop-filter: blur(6px);
-    	mask-image: linear-gradient(to top, #ffffff 0% 20%, transparent 55% 100%);
-		border-radius: radius-px(500);	
-	}
+	// &__thumbnail-overlay {
+	// 	position:absolute;
+	// 	top:0;
+	// 	left:0;
+	// 	bottom:0;
+	// 	right:0;
+	// 	background: #ffffff;
+	// 	background: linear-gradient(0deg,rgba(255,255,255, .10) 0%, rgba(255,255,255, 0.30) 100%);
+	// 	//backdrop-filter: blur(2px);
+	// 	filter:grayscale(1);
+    // 	// mask-image: linear-gradient(to top, #ffffff 0% 20%, transparent 55% 100%);
+	// 	border-radius: radius-px(500);	
+	// }
 
 	&__cs-label {    	
 		position:absolute;
