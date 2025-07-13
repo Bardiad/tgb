@@ -40,23 +40,6 @@ $lineHeight: map.get(config.$token-scales, "lineheight");
 	}
 }
 
-
-@each $bpkey, $bpvalue in config.$token-mq {
-  @include breakpoint($bpkey) {
-		.u-text-align-left-\@#{$bpkey} {
-		  text-align: left;
-		}
-
-		.u-text-align-right-\@#{$bpkey} {
-		  text-align:right;
-		}
-
-		.u-text-align-center-\@#{$bpkey} {
-		  text-align:center;
-		}
-	}
-}
-
 .u-text-align-left {
   text-align: left;
 }
@@ -84,3 +67,19 @@ $lineHeight: map.get(config.$token-scales, "lineheight");
 .u-text-underline {
 	text-decoration:underline;
 } 
+
+@each $bpkey, $bpvalue in config.$token-mq {
+  @include breakpoint($bpkey) {
+		.u-text-align-left-\@#{$bpkey} {
+		  text-align: left;
+		}
+
+		.u-text-align-right-\@#{$bpkey} {
+		  text-align:right;
+		}
+
+		.u-text-align-center-\@#{$bpkey} {
+		  text-align:center;
+		}
+	}
+}

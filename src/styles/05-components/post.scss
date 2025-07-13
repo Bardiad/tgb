@@ -9,6 +9,10 @@
 	align-items: flex-start;
 	margin-bottom:space-px(1000);
 
+	@include breakpoint("md") {
+		margin-bottom:space-px(1500);
+	}
+
 	@include breakpoint("xl") {
 		margin-bottom: space-px(2000);
 	}
@@ -103,10 +107,19 @@
 .c-portrait {
 	max-width:280px;
 	margin:0 auto;
+	
+	@include breakpoint("lg") {
+		max-width:380px;
+	}
 }
 
 .c-portrait-caption {
-	max-width:280px;
+	// max-width:280px;
 	margin:0 auto;
 	margin-top:space-px(300);
+	text-align:center;
+
+	@include breakpoint("lg") {
+		// max-width:380px;
+	}	
 }

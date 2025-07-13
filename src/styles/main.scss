@@ -29,7 +29,6 @@
 	align-items:center;
 }
 
-
 .c-proclaim-copy {
 	font-size: fontsize-px(300);
 	line-height:125%;
@@ -134,7 +133,6 @@
 }
 
 .o-bleed-right-container {
-
 }
 
 .icon {
@@ -332,7 +330,6 @@ input {
 	border:1px solid colorSet("ash", 200);
 }
 
-
 .download-form {
 	width:100%;
 	max-width:680px;
@@ -353,7 +350,6 @@ input {
 		}
 	}
 }
-
 
 .u-blend-multiply {
 	mix-blend-mode: multiply;
@@ -388,6 +384,7 @@ input {
   text-decoration: none;
   opacity: 0;
   pointer-events: none;
+  transform:translateY(1.75rem);
   transition: all 0.4s ease;
   z-index: 1000;
 
@@ -404,6 +401,7 @@ input {
 .c-back-to-top.show {
   opacity: 1;
   pointer-events: auto;
+  transform:translateY(0);  
 }
 
 .c-back-to-top:focus-visible {
@@ -431,5 +429,19 @@ input {
 		@include breakpoint("lg") {
 			width:unset;
 		}
+	}
+}
+
+
+.c-social-links {
+	margin-bottom:0;
+	margin-top:auto;
+	display:flex;
+	gap:12px;
+	list-style-type: none;
+
+	.icon {
+		width:2.5rem;
+		height:2.5rem;
 	}
 }
