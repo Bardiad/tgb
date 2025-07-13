@@ -45,7 +45,7 @@ onDOMReady(() => {
 
       //origin is at center of user pointer event, instead of center of button
       const originX = e.clientX;
-      const originY = e.clientY + window.scrollY;    
+      const originY = e.clientY;    
 
       for (let i = 0; i < confettiDensity; i++) {
 
