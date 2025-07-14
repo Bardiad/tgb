@@ -17,4 +17,12 @@
 	&__description {
 
 	}
+
+	&--small {
+		padding:2rem 1.75rem;
+	}
+
+	&--info {
+		background:colorSet("plum", 100);
+	}
 }
