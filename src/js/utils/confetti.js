@@ -1,8 +1,8 @@
 export function attachConfettiEffect(element, options = {}) {
-  debug;
+
   const {
     colors = [{ h: 270, s: [50, 80], l: [50, 70] }],
-    particleCount = 15,
+    particleCount = 30,
     maxRadius = 100,
     minRadius = 60,
     duration = [800, 1200],
@@ -12,12 +12,12 @@ export function attachConfettiEffect(element, options = {}) {
 
   const container = document.getElementById('confettiContainer') || createConfettiContainer();
 
-  element.addEventListener('click', () => {
+  element.addEventListener('click', (e) => {
     if (prefersReducedMotion) return;
 
-    const rect = element.getBoundingClientRect();
-    const originX = rect.left + rect.width / 2;
-    const originY = rect.top + window.scrollY + rect.height / 2;
+    //origin is at center of user pointer event, instead of center of button
+    const originX = e.clientX;
+    const originY = e.clientY;
 
     for (let i = 0; i < particleCount; i++) {
       const confetti = document.createElement('div');
@@ -40,7 +40,7 @@ export function attachConfettiEffect(element, options = {}) {
       confetti.style.top = `${originY}px`;
 
       container.appendChild(confetti);
-      setTimeout(() => confetti.remove(), duration[1] + 200);
+      setTimeout(() => confetti.remove(), duration[1] + 600);
     }
   });
 }
