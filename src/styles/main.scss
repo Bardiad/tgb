@@ -31,16 +31,20 @@
 
 .c-proclaim-copy {
 	font-size: fontsize-px(300);
-	line-height:125%;
+	line-height:140%;
 	color:colorSet("ash", 500);
 	font-weight:500;
 
-	&--lg {
-		font-size: fontsize-px(400);
+	@include breakpoint ("lg") {
+			font-size: fontsize-px(400);
+	}
 
-		// @include breakpoint("lg") {
-		// 	font-size:fontsize-px(500);
-		// }
+	&--lg {
+		font-size: 18px;
+
+		@include breakpoint("lg") {
+			font-size:21px;
+		}
 	}
 
 	&--lg-\@sm {
