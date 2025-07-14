@@ -4,9 +4,10 @@
 
 .c-banner {
 	padding:2.5rem 2rem;
-	border-radius:radius-px(300);
-	border:1px solid colorSet("ash", 200);
+	border-radius:radius-px(500);
+	//border:1px solid colorSet("ash", 200);
 	text-align:center;
+	background:colorSet("ash", 50);
 
 	&__heading {
 		margin-bottom:space-px(200);

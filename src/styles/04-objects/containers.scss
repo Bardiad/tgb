@@ -79,6 +79,16 @@
 .o-narrow-width-container {
 	width:100%;
 	max-width:config.$copyContainerWidth;
+	padding:0 config.$outer-margin-sm;
+
+	@include custombp(895){
+		padding:0 config.$outer-margin-lg;		
+	}	
+}
+
+.o-about-me-container {
+	width:100%;
+	max-width:config.$copyContainerWidth;
 }
 
 

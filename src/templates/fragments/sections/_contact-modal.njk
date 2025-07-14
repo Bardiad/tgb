@@ -1,0 +1,15 @@
+<div class="modal micromodal-slide" id="contact-modal" aria-hidden="true">
+	<div class="modal__overlay" tabindex="-1" data-micromodal-close>
+	  <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+	    <header class="modal__header">
+	      {# <h2 class="modal__title" id="contact-modal-title">Get in touch</h2> #}
+	      <button class="modal__close" aria-label="Close modal" data-micromodal-close>
+	      	<svg class="icon"><use href="#xmark"></use></svg>
+	      </button>
+	    </header>
+	    <main class="modal__content" id="contact-modal-content">
+	    	{% include "fragments/fragment.contact-form.njk" %}
+	    </main>
+	  </div>
+	</div>
+</div>

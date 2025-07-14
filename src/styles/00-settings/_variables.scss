@@ -7,7 +7,7 @@
 @use 'tokens.type' as *;
 
 $container-max-width: 1480px;
-$copyContainerWidth: 786px;
+$copyContainerWidth: 880px;
 $gridColumns:12;
 $outer-margin-sm: #{map.get(map.get($scales, "space"), "500")}px;
 $outer-margin-lg: #{map.get(map.get($scales, "space"), "1000")}px; 

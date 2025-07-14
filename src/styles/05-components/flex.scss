@@ -7,12 +7,18 @@ $flexgutter: 32px;
 $widths : map.get(config.$token-scales, "percent-width");
 
 
+
 @each $key, $value in $widths {
 	.w-#{$key} {
 		width: #{$value};
 
 	}
 }
+
+.w-unset {
+	width:unset;
+}
+
 
 .flex-dir-col {
 	flex-direction: column; 
@@ -73,7 +79,11 @@ $widths : map.get(config.$token-scales, "percent-width");
 			.w-#{$key}-\@#{$bpkey} {
 				width: $value;
 			}
-		}		
+		}
+
+		.w-unset-\@#{$bpkey} {
+			width:unset;
+		}	
 	}
 }
 

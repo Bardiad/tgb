@@ -311,10 +311,15 @@ label {
 	}
 }
 
-input {
+input, textarea {
 	padding:space-px(300);
 	border-radius:radius-px(300);
 	border:1px solid colorSet("ash", 200);
+}
+
+textarea {
+	resize: vertical;
+	min-height:220px;
 }
 
 .download-form {
@@ -322,7 +327,7 @@ input {
 	max-width:680px;
 
 	input { width:100%; }
-	button {width: 100%; }
+	button { width: 100%; }
 
 	@include breakpoint("lg") {
 		input {
@@ -373,7 +378,7 @@ input {
   pointer-events: none;
   transform:translateY(1.75rem);
   transition: all 0.4s ease;
-  z-index: 1000;
+  z-index: 4;
 
   &:hover {
   	background-color: rgba(colorSet("plum", 100), .45);
@@ -440,3 +445,87 @@ input {
 	max-width:560px;
 }
 
+.c-contact-form {
+	position:relative;
+	display:flex;
+	flex-direction:column;
+
+	.icon {
+		width:2.5rem;
+		height:2.5rem;		
+	}
+
+	&__form {
+		display:flex;
+		flex-direction:column;		
+	}
+
+	&__success {
+		text-align:center;
+		.icon {
+			color:colorSet("mint", 500);
+		}
+	}
+
+	&__error {
+		text-align:center;
+		padding:.75rem;
+		background:colorSet("merlot", 100);
+		margin-bottom:space-px(600);
+		border-radius:radius-px(400);
+
+		.icon { 
+			color: colorSet("merlot", 500);
+			height:1.5rem;
+			width:1.5rem;
+		}
+	}
+
+	&__overlay {
+	  position: absolute;
+	  top: 0; left: 0;
+	  width: 100%;
+	  height: 100%;
+	  background: rgba(255, 255, 255, 0.9);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  flex-direction: column;
+	  z-index: 1000;
+	  text-align: center;
+	  padding: 2rem;
+	  opacity: 0;
+	  pointer-events: none;
+	  transition: opacity 300ms ease;	  		
+	}
+
+	&__overlay--visible {
+	  opacity: 1;
+	  pointer-events: all;		
+	}
+
+	&__overlay-text {
+	  font-size: 1.25rem;
+	  font-weight: 500;
+	}
+
+	&__submit {
+		width:100%;
+
+		@include breakpoint("lg") {
+			width:unset;
+		}
+	}
+
+	textarea {
+		max-height:320px;
+	}
+
+}
+
+.c-input-group {
+	display:flex;
+	flex-direction:column;
+	gap:space-px(200);
+
+}

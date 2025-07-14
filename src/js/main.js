@@ -128,6 +128,134 @@ onDOMReady(() => {
     });
   });
 
+
+  //Contact form
+  const contactForm = document.getElementById("contactForm");
+  const contactFormResult = contactForm.querySelector("[data-form-result]");
+  const overlay = contactForm.querySelector("[data-form-overlay]");
+  const overlayText = overlay.querySelector(".c-contact-form__overlay-text .dot-animation");
+  let dotInterval = null;
+
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+
+    const isTesting = false;
+    // Convert form to JSON
+    const formData = new FormData(contactForm);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    // Show overlay and start animation
+    showOverlay();
+    animateDots();
+
+    if (isTesting) {
+      setTimeout(() => {
+        console.log("Simulating response...");
+        const wasSuccessful = true;
+
+        if (wasSuccessful) {
+          showSuccessOverlay();
+        } else {
+          showFormError("Simulated error occurred. Please try again.");
+        }
+
+        contactForm.reset();
+        stopDotAnimation();
+
+        setTimeout(() => {
+          hideOverlay();
+        }, 5000);
+      }, 1500); // Simulate 1.5s delay
+    } else {
+      console.log("Submitting contact form...");
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: json
+      })
+      .then(async (response) => {
+          const json = await response.json();
+          if (response.status === 200) {
+            showSuccessOverlay();
+          } else {
+            showFormError(json.message);
+          }
+      })
+      .catch((error) => {
+          console.error(error);
+          showFormError("Something went wrong!");
+      })
+      .then(() => {
+          contactForm.reset();
+          stopDotAnimation();
+          setTimeout(() => {
+            hideOverlay();
+          }, 5000);
+      });
+    }
+
+  });
+
+  function showOverlay() {
+    overlay.classList.add("c-contact-form__overlay--visible");
+    animateDots();
+  }
+
+  function hideOverlay() {
+    overlay.classList.remove("c-contact-form__overlay--visible");
+    stopDotAnimation();
+
+    setTimeout(() => {
+      overlay.innerHTML = `
+        <p class="c-contact-form__overlay-text">
+          Please wait<span class="dot-animation">.</span>
+        </p>
+      `;
+    }, 300); // Give time for fade-out before resetting
+  }
+
+  function animateDots() {
+    const target = overlay.querySelector(".dot-animation");
+    let dots = 1;
+    dotInterval = setInterval(() => {
+      dots = (dots % 3) + 1;
+      target.textContent = ".".repeat(dots);
+    }, 500);
+  }
+
+  function stopDotAnimation() {
+    clearInterval(dotInterval);
+    dotInterval = null;
+  }
+
+  function showSuccessOverlay() {
+    overlay.innerHTML = `
+      <div class="c-contact-form__success">
+        <svg class="icon"><use href="#circle-check"></use></svg>
+        <h3>Message sent!</h3>
+        <p class="body-copy">Your message has been sent. You'll hear back from me within 24 hours.</p>
+      </div>
+    `;
+  }
+
+  function showFormError(message) {
+    hideOverlay();
+    stopDotAnimation();
+    contactFormResult.innerHTML = `
+      <svg class="icon"><use href="#circle-exclamation"></use></svg>
+      <h5>Something went wrong</h5>
+      <p class="body-copy">${message}</p>
+    `;
+
+    contactFormResult.style.display = "block";
+  }
+
   //Back to top
   const backToTopBtn = document.querySelector('.c-back-to-top');
   let lastScrollY = window.scrollY;

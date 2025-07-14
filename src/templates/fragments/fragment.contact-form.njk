@@ -1,0 +1,42 @@
+<div class="c-contact-form">
+	<div class="u-margin-b-500 u-text-align-center">
+		<h3 class="u-margin-b-200">Send me a message</h3>
+		<p class="body-copy u-margin-b-200">Fill out the form to get in touch with me directly. I respond to all messages within 24 hours.</p>
+		<p class="body-copy u-text-italic u-color-ash-600">All fields are required.</p>
+	</div>
+
+
+	
+	<form id="contactForm" class="c-contact-form__form" action="https://api.web3forms.com/submit" method="POST">
+		<div data-form-result class="c-contact-form__error" style="display:none;"></div>
+
+	    <input type="hidden" name="access_key" value="2488ade8-f343-45e1-b306-1997824011ce">
+
+	    <!-- Form Inputs. Each input must have a name="" attribute -->
+	    <div class="c-input-group u-margin-b-400">
+	    	<label for="formName">Name</label>
+	    	<input type="text" id="formName" name="name" placeholder="Your Name" required>
+		</div>
+	    
+		<div class="c-input-group u-margin-b-400">
+	    	<label for="formEmail">Email</label>
+	    	<input type="email" id="formEmail" name="email" placeholder="Your Email" required>
+	    </div>
+
+	    <div class="c-input-group u-margin-b-400">
+	    	<label for="formMessage">Your Message</label>
+	    	<textarea name="message" id="formMessage" required placeholder="Type your message here"></textarea>
+	    </div>
+
+	    <input type="hidden" name="subject" value="New Submission from ThatGuyBardia.ca">
+	    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+	    <div class="u-flex u-justify-content-end">
+	    	<button class="c-button c-button--primary c-contact-form__submit" type="submit">Submit Form</button>
+	    </div>
+
+		<div data-form-overlay class="c-contact-form__overlay">
+		  <p class="c-contact-form__overlay-text">Please wait<span class="dot-animation">.</span></p>
+		</div>	    
+	</form>
+</div>

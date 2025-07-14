@@ -24,12 +24,15 @@
   </head>
 
   <body id="top">
+    <div id="confettiContainer" aria-hidden="true"></div>   
     {% include "fragments/fragment.icons.njk" %}
     {% include "fragments/fragment.header.njk" %}
     <main class="o-main-container" role="main">
     {% block body %}{% endblock %}
     </main>
     {% include "fragments/fragment.footer.njk" %}
+    {% include "fragments/sections/_contact-modal.njk" %}    
+    <script src="/js/libs/micromodal.js"></script>
     <script type="module" src="/js/main.js"></script>
   </body>
 
