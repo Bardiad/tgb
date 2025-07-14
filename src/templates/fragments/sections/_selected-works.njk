@@ -1,0 +1,42 @@
+<section id="projects" class="c-posts u-bg-color-misc-white u-padding-y-1000 u-padding-y-1500-@xl">
+	<div class="o-container">
+		<h2 class="u-margin-b-900-@xl u-margin-b-600-@xs w-100">Selected works</h2>
+		{% for post in data.POSTS %}
+			<article class="c-post u-flex u-justify-content-center-@xs gap-200-@xs gap-800-@lg gap-1700-@xxl flex-wrap-@xs flex-nowrap-@lg">
+				<div class="c-post__content w-100-@xs w-50-@lg w-40-@xxl">
+					<p class="c-post__meta u-color-ash-800 u-margin-t-300-@xs u-margin-t-0-@xl">{{ post.year }}</p>				
+					<h3 class="c-post__title subheading-1 u-margin-b-200">{{ post.headline }}</h3>
+					<ul class="c-taglist u-margin-b-400">
+						{%  for tag in post.tags %}
+							<li class="c-taglist__tag">{{ tag }}</li>
+						{% endfor %}
+					</ul>
+					<p class="c-post__description body-copy u-margin-b-600">{{ post.description }}</p>
+
+					{% if post.comingSoon %}
+						<p class="u-font-size-300 u-text-italic">Case study coming soon</p>
+					{% else %}
+						<a href="/case-studies/{{ post.slug }}.html" class="c-button c-button--secondary c-button--small c-button--fw-@xs c-button--ib-@lg">Read case study</a>
+					{% endif %}						
+				</div>
+
+				{% if post.comingSoon %}
+				<div class="c-post__cs-wrapper u-border-color-ash-200 u-block w-100-@xs w-50-@lg w-60-@xxl flex-order-first-@xs flex-order-0-@lg">
+					<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" class="o-fluid-img c-post__thumbnail"/>
+					<div class="c-post__thumbnail-overlay"></div>
+					<p class="c-post__cs-label">Coming soon</p>
+				</div>
+				{% else %}
+				<a href="/case-studies/{{ post.slug }}.html" class="u-block w-100-@xs w-50-@lg w-60-@xxl c-post__thumbnail-link flex-order-first-@xs flex-order-0-@lg u-border-color-ash-200" style="--thumbHover: {{ post.theme }}">
+					<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" width="850" height="552" class="o-fluid-img c-post__thumbnail"/>
+				</a>
+				{% endif %}				
+			</article>
+		{% endfor %}
+
+		{#<article class="c-coming-soon w-100-@xs u-padding-700 u-bg-color-ash-100 u-border-radius-500">
+			<h3 class="u-margin-b-200">More projects coming soon</h3>
+			<p class="u-margin-b-0 w-80-@lg w-60-@xl">Thanks for your patience while I add more case studies to my portfolio. In the meantime you can check out <a href="/old">my previous portfolio</a> to see my work from 2015-2019.</p> 
+		</article> #}
+	</div>
+</section>
