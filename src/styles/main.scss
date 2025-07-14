@@ -132,9 +132,6 @@
 	list-style-position: outside;
 }
 
-.o-bleed-right-container {
-}
-
 .icon {
 	width:1.5rem;
 	height:1.5rem;
@@ -279,14 +276,11 @@
 	height:auto;
 }
 
-.c-key-metrics {
+.c-key-facts {
 	display:flex;
-	flex-wrap:wrap;
-	width:100%;
 	align-self:start;
 	border:1px solid colorSet("ash", 300);
 	border-radius:radius-px(300);
-
 
 	&__item {
 
@@ -307,13 +301,6 @@
 		}
 	}
 
-	@include breakpoint("md") {
-		flex-wrap:nowrap;
-	}
-
-	@include breakpoint("xl") {
-		width:70%;
-	}
 }
 
 label {
@@ -432,7 +419,6 @@ input {
 	}
 }
 
-
 .c-social-links {
 	margin-bottom:0;
 	margin-top:auto;
@@ -445,3 +431,12 @@ input {
 		height:2.5rem;
 	}
 }
+
+.c-about {
+	text-align:center;
+}
+
+.band-photo {
+	max-width:560px;
+}
+

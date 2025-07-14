@@ -3,20 +3,17 @@
 @use "../01-tools/functions" as *;
 
 .o-main-container {
-	// flex: 1 0 auto;
-	// width:100%;
 	background:colorSet("misc", "white");
 }
-
 
 .o-container {
 	width:100%;
 	max-width:config.$container-max-width;
-	padding:0 config.$page-gutter-sm;
+	padding:0 config.$outer-margin-sm;
 	margin:0 auto;
 
 	@include custombp(895){
-		padding:0 config.$page-gutter-lg;		
+		padding:0 config.$outer-margin-lg;		
 	}
 
 	&--fluid-width {
@@ -63,32 +60,25 @@
 
 	width:100%;
 	max-width:config.$container-max-width;
-	padding:0 config.$page-gutter-sm;
+	padding:0 config.$outer-margin-sm;
 
 	@include custombp(895){
-		padding:0 config.$page-gutter-lg;		
+		padding:0 config.$outer-margin-lg;		
 	}
 }
 
 .o-fluid-width-container {
 	width:100%;
-	padding:0 config.$page-gutter-sm;
+	padding:0 config.$outer-margin-sm;
 
 	@include custombp(895){
-		padding:0 config.$page-gutter-lg;		
+		padding:0 config.$outer-margin-lg;		
 	}	
 }
 
 .o-narrow-width-container {
-	display:flex;
-	justify-content:center;
-	flex-direction:column;
 	width:100%;
 	max-width:config.$copyContainerWidth;
-}
-
-.o-center-wrapper--row {
-	flex-direction:row;
 }
 
 

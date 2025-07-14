@@ -8,6 +8,7 @@
 
 $container-max-width: 1480px;
 $copyContainerWidth: 786px;
-$page-gutter-sm: #{map.get(map.get($scales, "space"), "500")}px;
-$page-gutter-lg: #{map.get(map.get($scales, "space"), "1000")}px; 
+$gridColumns:12;
+$outer-margin-sm: #{map.get(map.get($scales, "space"), "500")}px;
+$outer-margin-lg: #{map.get(map.get($scales, "space"), "1000")}px; 
 

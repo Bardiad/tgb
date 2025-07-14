@@ -3,16 +3,14 @@
 @use "../00-settings" as config;
 @use "../01-tools/functions" as *;
 
-$columns: 12;
+$columns: config.$gridColumns;
 $spaces : map.get(config.$token-scales, "space");
 
-
-.u-auto-margin {
+.u-margin-auto {
   margin-left:auto;
   margin-right:auto;
 }
 
-//these apply to all breakpoints
 @each $step, $value in $spaces {
 
   .u-padding-#{$step} {
@@ -45,6 +43,11 @@ $spaces : map.get(config.$token-scales, "space");
     padding-bottom:#{$value}px;
   }
 
+  .u-margin-auto-#{$step} {
+    margin-left:auto;
+    margin-right:auto;
+  }   
+
   .u-margin-#{$step} {
     margin:#{$value}px;
   }
@@ -73,7 +76,8 @@ $spaces : map.get(config.$token-scales, "space");
 
   .u-margin-r-#{$step} {
     margin-right:#{$value}px;
-  }  
+  }
+
 }
 
 .u-align-items-start {
@@ -147,7 +151,6 @@ $spaces : map.get(config.$token-scales, "space");
 .u-flex-shrink-1 {
   flex-shrinkg:1;
 }
-
 
 @each $skey, $svalue in $spaces {
   .gap-#{$skey} {

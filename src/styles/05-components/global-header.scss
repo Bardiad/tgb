@@ -9,7 +9,7 @@
 	align-items:center;
 	justify-content:center;
 	width:100%;
-	padding:space-px(400) space-px(500);
+	padding:space-px(400) config.$outer-margin-sm;
 
 	&--sticky {
 		position:sticky;
@@ -41,7 +41,7 @@
 	}
 
 	@include custombp(895) {
-		padding:space-px(600) space-px(1000);		
+		padding:space-px(600) config.$outer-margin-lg;		
 	}
 }
 

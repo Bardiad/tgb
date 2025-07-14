@@ -15,8 +15,24 @@
 .c-portriat-wrapper {
 	img {
 		max-width:540px;
-		margin:0 auto;
-
-
 	}
+}
+
+
+.c-portrait {
+	max-width:280px;
+	margin:0 auto;
+	
+	@include breakpoint("lg") {
+		max-width:380px;
+	}
+}
+
+.c-portrait-caption {
+	margin:0 auto;
+	margin-top:space-px(300);
+	text-align:center;
+
+	@include breakpoint("lg") {
+	}	
 }
