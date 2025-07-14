@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-banner {
+	padding:2.5rem 2rem;
+	border-radius:radius-px(300);
+	border:1px solid colorSet("ash", 200);
+	text-align:center;
+
+	&__heading {
+		margin-bottom:space-px(200);
+
+	}
+
+	&__description {
+
+	}
+}
