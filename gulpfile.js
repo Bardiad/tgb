@@ -44,13 +44,19 @@ function _clean(callback) {
   ).pipe(clean());
 }
 
+function _copyOldSite() {
+  return src('old/**/*', { base: 'old', encoding: false }) // preserve folder structure
+    .pipe(dest(globalThis.BASE_PATH + '/dist/old'));
+}
+
+
 function _watchFiles(callback) {
   console.log("Watching files...");
   watch(config.project.watch, _buildTasks);
   callback();
 }
 
-const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts);
+const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts, _copyOldSite);
 const _serve      = parallel(_buildTasks, _startConnect, _watchFiles);
 
 // Task exports
@@ -63,3 +69,4 @@ export { _startConnect as connect };
 export { _buildHTML as "build:html" };
 export { _buildStyles as "build:css" };
 export { _buildTasks as "build:all" };
+export {_copyOldSite as "copy:old"};

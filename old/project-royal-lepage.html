@@ -1,0 +1,149 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Royal LePage | Bardia Doust | Graphic Designer & Front-End Developer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <!--[if lte IE 9]>
+    <div  class="browserupgrade">
+      <p>You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    </div>
+  <![endif]-->
+
+  <div id="no-js-message" class="no-js-message">
+    <h2>Sorry, Javascript needs to be enabled.</h2>
+    <p>Thatguybardia.ca is my personal portfolio as well as a bit of a play ground for me to try out new things, gather real-life usage feedback and try things out. To that end having Javascript enabled is a bit of a requirment.</p>
+  </div>
+
+  <div class="l-site" id="site-wrapper" style="display:none;">
+    <div class="l-site__inner">
+      <div class="l-site__sidebar c-sticky-sidebar is-hidden">
+        <div class="c-sticky-sidebar__inner">
+          <div class="c-logo">
+            <div class="c-logo__inner">
+              <a href="/">
+                <span class="c-logo__word that">That</span>
+                <span class="c-logo__word guy">Guy</span>
+                <span class="c-logo__word bardia">Bardia</span>
+              </a>            </div>
+          </div>
+          <nav class="l-site__navbar">
+            <ul>
+              <li><a href="/">Projects</a></li>
+              <li><a href="about.html">About</a></li>
+<!--               <li><a href="resume.html">Resume</a></li> -->
+
+            </ul>
+          </nav>
+
+
+          <ul class="c-social-media-links">
+            <li><a href="https://twitter.com/bardiadoust" class="li">LinkedIn</a></li>
+            <li><a href="https://twitter.com/bardiadoust" class="tw">Twitter</a></li>
+            <li><a href="https://www.instagram.com/bardiad" class="ig">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <main class="l-site__main">
+        <div id="nav-hamburger" class="c-burger-button">
+          <div class="c-burger-button__line"></div>
+          <div class="c-burger-button__line"></div>
+        </div>
+
+        <div class="c-block c-block--project-details-header" data-scrollpost>
+          <div class="c-block__media"><img src="img/royallepage_thumb-lg.jpg"/></div>
+          <div class="c-block__body">
+              <h2 class="c-blocK__title">RoyalLePage.ca</h2>
+          </div>
+        </div>
+
+        <div class="c-project-details">
+          <div class="c-project-details__copy-block u-pa-3x">
+            <div class="grid gutters">
+              <div class="col-xs-1-1 col-md-1-2 col-lg-1-4">
+                <div class="c-project-details__client-col">
+                  <span class="label">client</span>
+                  <p>Royal LePage</p>
+                  <span class="date u-mb-1x">Sept, 2017</span>
+                  <a class="c-button c-button--full-width" id="launch-project" href="https://www.royallepage.ca">Launch</a>
+                </div>
+              </div>
+              <div class="col-xs-1-1 col-md-1-2 col-lg-3-4">
+                <span class="label">the brief</span>
+                <p class="u-mb-1x">Royal LePage, one of Canada's biggest real estate franchiser, had recently commissioned a redesign for their consumer site. Royal LePage approached Alaia to implement this design.</p>
+
+                <span class="label">what i did</span>
+                <p>As lead front-end developer I worked as part of a 3 person team to develop an implementation strategy for the project. My role involved translating the provided PDF mockups into tangible front end code. Our team also developed new patterns to encapsulate much of Royal LePages legacy javascript code, while still being able to implement new features using revealing module patterns.</p>
+
+                <p>Royal LePages new website was also our first use of BEM as a CSS naming convention to delineate reusable modules and chunks in our CSS code. This was also the first time we used a custom and semi-automated svg icon system to translate the designed PDF assets into ready-to-use SVG assets.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-project-details__img-block">
+            <img class="u-img-full-width" src="img/project/royal-lepage/royal-lepage-01-wide.jpg"/>
+          </div>
+
+          <div class="c-project-details__copy-block u-pa-3x u-border-b-1">
+            <span class="label">challanges i faced</span>
+            <p>One of the biggest challenges in this redesign was handling the large set of menus and submenus that Royal LePage has. The problem was particularly prevalent at tablet and small-screen laptop sizes where there was still available space for some menu items. We wanted to avoid relying solely on the "hamburger" menu to hide all our menu items, at least on devices where we had space to utilize. The solution we decided to go with was a "priority plus" style menu system where we would show as many top-level menu items as would comfortably fit on screen, slotting the rest under a "more" (or +) sub-menu. We made sure to throttle these calculations on window resize, so it wouldn't impact performance too much.</p>
+          </div>
+
+          <div class="c-project-details__img-block">
+            <img class="u-img-full-width" src="img/project/royal-lepage/royal-lepage-02-wide.jpg"/>
+          </div>
+          <div class="c-project-details__img-block u-mb-1x u-border-tb-1">
+            <img class="u-img-full-width" src="img/project/royal-lepage/royal-lepage-04-wide.jpg"/>
+          </div>  
+          <div class="c-project-details__img-block u-mt-1x">
+            <img class="u-img-full-width" src="img/project/royal-lepage/royal-lepage-03-wide.jpg"/>
+          </div>
+
+          <div class="c-project-details__copy-block u-pa-3x">
+            <span class="label">final thoughts</span>
+            <p>This project was a great chance for me to put into practice much of what we had learned internally about BEM naming conventions and ITCSS file structures. The Royal LePage redesign was also the first time I had developed an SVG only icon system which I found to be highly modular and easy to extend with new icons quickly. However I still feel it has some drawbacks, the biggest being the need to include the SVG code on every page it is used in.</p>
+          </div>
+
+        
+        </div>
+        <div class="back-to-projects"><a href="index.html#project-gallery">Back to projects</a></div>
+
+        <div class="c-block c-block--footer">
+          <span class="copyright">&copy; <span class="date"></span> Bardia Doust. All Rights Reserved.</span>
+        </div>
+        <div class="u-mobile-cover"></div>
+      </main>      
+    </div>
+  </div>
+  <script src="js/libs/modernizr-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-3.3.1.min.js"><\/script>')</script>
+  <script src="js/libs/jquery.sticky-sidebar.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- 
+    <script>
+    /*
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview') */
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    -->
+</body>
+
+</html>
