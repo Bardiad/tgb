@@ -8,6 +8,8 @@ build/
 # System files
 .DS_Store
 Thumbs.db
+.*-autosave.kra
+*~
 
 # Logs
 npm-debug.log*
