@@ -3,6 +3,7 @@ import fs from 'fs';
 import clean from 'gulp-clean';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
+import { stream as criticalStream } from 'critical';
 
 import * as util from './gulp/tasks/common.js';
 import * as html_tasks from './gulp/tasks/html.js';
@@ -36,6 +37,24 @@ function _startConnect(callback) {
   callback();
 }
 
+function inlineCriticalCSS() {
+  return src('dist/**/*.html')
+    .pipe(
+      criticalStream({
+        base: 'dist/',
+        inline: true,
+        css: ['dist/css/main.css'],
+        dimensions: [                        
+          { width: 320,  height: 480  },
+          { width: 768,  height: 1024 },
+          { width: 1200, height: 900  }
+        ],
+        extract: false                      
+      })
+    )
+    .pipe(dest('dist'));                     // overwrite the HTML in place
+}
+
 function _clean(callback) {
   console.log('Cleaning', globalThis.BUILD_PATH);
 
@@ -57,7 +76,7 @@ function _watchFiles(callback) {
   callback();
 }
 
-const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts, _copyOldSite);
+const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts, _copyOldSite, inlineCriticalCSS);
 const _serve      = parallel(_buildTasks, _startConnect, _watchFiles);
 
 // Task exports
@@ -71,3 +90,4 @@ export { _buildHTML as "build:html" };
 export { _buildStyles as "build:css" };
 export { _buildTasks as "build:all" };
 export {_copyOldSite as "copy:old"};
+export {inlineCriticalCSS as "lnlineCritical"}
