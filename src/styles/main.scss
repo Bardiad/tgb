@@ -407,10 +407,15 @@ textarea {
 
 .c-para-end {
 	display:inline-block;
-	height:16px;
-	width:16px;
+	height:12px;
+	width:12px;
 	border-radius:2px;
 	background-color: colorSet("plum", 500);
+
+	@include breakpoint("lg") {
+		width:14px;
+		height:14px;
+	}
 }
 
 .c-button-group {
@@ -442,7 +447,7 @@ textarea {
 }
 
 .c-about {
-	text-align:center;
+
 }
 
 .band-photo {
@@ -530,6 +535,18 @@ textarea {
 .c-input-group {
 	display:flex;
 	flex-direction:column;
-	gap:space-px(200);
+	gap:space-px(100);
 
+}
+
+
+.c-404-img {
+	max-width:780px;
+	width:100%;
+	height:auto;
+	margin:0 auto;
+
+	@include breakpoint("lg") {
+		max-width:780px
+	}
 }

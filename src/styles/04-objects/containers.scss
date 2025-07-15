@@ -76,7 +76,7 @@
 	}	
 }
 
-.o-narrow-width-container {
+.o-narrow-padded-container {
 	width:100%;
 	max-width:config.$copyContainerWidth;
 	padding:0 config.$outer-margin-sm;
@@ -86,7 +86,7 @@
 	}	
 }
 
-.o-about-me-container {
+.o-narrow-container {
 	width:100%;
 	max-width:config.$copyContainerWidth;
 }

@@ -30,6 +30,7 @@ function _startConnect(callback) {
     port: 8000,
     root: globalThis.BUILD_PATH,
     host: '0.0.0.0',
+    fallback: globalThis.BUILD_PATH + "/404.html",
     livereload: true
   });
   callback();
