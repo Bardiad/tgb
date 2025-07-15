@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+
+.c-aside {
+	border-radius: radius-px(400);
+	border:1px solid colorSet("ash", 100);
+	//background: colorSet("ash", 50);
+	padding:space-px(700);
+
+	.body-copy {
+		line-height:135%
+	}
+}

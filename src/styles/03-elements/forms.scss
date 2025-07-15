@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+label {
+	font-size:fontsize-px(300);
+
+	& + input {
+		margin-top:space-px(100);
+	}
+}
+
+input, textarea {
+	padding:space-px(300);
+	border-radius:radius-px(300);
+	border:1px solid colorSet("ash", 200);
+}
+
+textarea {
+	resize: vertical;
+	min-height:220px;
+}

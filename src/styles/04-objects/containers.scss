@@ -41,17 +41,6 @@
 	}
 }
 
-
-.background-image-women {
-	background-image:url("../img/women-with-baby.jpg");
-	background-size:cover;
-	min-height:600px;
-}
-
-
-
-/* DEPRICATED: DO NOT USE
-   Use o-container and modifier classes instead */
 .o-max-width-container {
 	display:flex;
 	flex-direction:column;
@@ -91,7 +80,6 @@
 	max-width:config.$copyContainerWidth;
 }
 
-
 .u-img-crisp {
   image-rendering: -moz-crisp-edges; /* Firefox */
   image-rendering: -o-crisp-edges; /* Opera */
@@ -100,4 +88,14 @@
   -ms-interpolation-mode: nearest-neighbor; /* IE (non-standard property) */	
 }
 
+
+.o-overflow-container {
+	width:100%;
+	overflow:hidden;
+
+	&__inner {		
+	min-width:780px;
+	overflow-x:auto;
+	}
+}
 

@@ -1,0 +1,97 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+
+.c-accordion-item {
+	border-bottom:1px solid colorSet("ash", 200);
+	width:100%;
+	
+	&__header {
+		display:flex;
+		justify-content:space-between;
+
+		font-size: 18px;
+		line-height:125%;
+		font-weight:500;
+		color:colorSet("ash", 900);
+
+		@include breakpoint("lg") {
+			font-size: fontsize-px(400);			
+		}
+	}
+
+	&__trigger {
+		display:flex;
+		justify-content: space-between;
+		background:transparent;
+
+		padding:space-px(400) space-px(300);
+		margin:space-px(200);
+		width:100%;
+		text-align:start;
+		
+		border-radius:radius-px(300);
+
+		.icon {
+			color: colorSet("ash", 500);
+		}
+
+		&:hover,
+		&.is-active,
+		&:focus-visible {
+			background:colorSet("ash", 50);
+			color:colorSet("plum", 500);
+
+			.icon { color:colorSet("plum", 500); }
+		}
+
+		&:active {
+			background:colorSet("ash", 100);
+			color:colorSet("plum", 900);
+		}
+
+		&:focus-visible {
+
+			.icon { color:colorSet("plum", 500); }
+		}
+
+		@include breakpoint("lg") {
+			padding:space-px(500) space-px(300);
+			margin:space-px(300);			
+		}		
+	}
+
+	&__panel {
+		padding:0 space-px(500) space-px(500);
+		font-size: fontsize-px(300);
+		line-height:140%;
+		color:colorSet("ash", 500);
+		font-weight:400;			
+
+		@include breakpoint("lg") {
+			//padding:0 space-px(500) space-px(300);
+		}
+	}
+}
+
+.c-accordion-group {
+
+	.c-accordion-item {
+
+		&:first-of-type {
+			border-top:1px solid colorSet("ash", 100);
+		}
+
+	}
+}
+
+.accordion-toggle-all {
+	//margin-left:auto;	
+	width:100%;
+
+	@include breakpoint("lg") {
+		margin-left:auto;
+		width:unset;
+	}
+}

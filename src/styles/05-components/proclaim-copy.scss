@@ -1,0 +1,58 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-proclaim-copy {
+	font-size: fontsize-px(300);
+	line-height:140%;
+	color:colorSet("ash", 500);
+	font-weight:500;
+
+	@include breakpoint ("lg") {
+			font-size: fontsize-px(400);
+	}
+
+	&--lg {
+		font-size: 18px;
+
+		@include breakpoint("lg") {
+			font-size:21px;
+		}
+	}
+
+	&--lg-\@sm {
+		@include breakpoint ("sm") {
+			font-size: fontsize-px(400);			
+		}
+	}
+
+	&--lg-\@md {
+		@include breakpoint ("md") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@lg {
+		@include breakpoint ("lg") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xl {
+		@include breakpoint ("xl") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xxl {
+		@include breakpoint ("xxl") {
+			font-size: fontsize-px(400);			
+		}		
+	}
+
+	&--lg-\@xxxl {
+		@include breakpoint ("xxxl") {
+			font-size: fontsize-px(400);			
+		}		
+	}					
+}

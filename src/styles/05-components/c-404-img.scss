@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+
+.c-404-img {
+	max-width:780px;
+	width:100%;
+	height:auto;
+	margin:0 auto;
+
+	@include breakpoint("lg") {
+		max-width:780px
+	}
+}

@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+
+.c-input-group {
+	display:flex;
+	flex-direction:column;
+	gap:space-px(100);
+
+}

@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-key-facts {
+	display:flex;
+	align-self:start;
+	border:1px solid colorSet("ash", 300);
+	border-radius:radius-px(300);
+
+	&__item {
+
+		padding:space-px(500);
+		border-bottom:1px solid colorSet("ash", 300);
+
+
+		@include breakpoint("md") {
+			border-right:1px solid colorSet("ash", 300);
+			border-bottom:none;
+
+		}
+
+		&:last-of-type {
+
+			border-right:none;
+			border-bottom:none;
+		}
+	}
+
+}

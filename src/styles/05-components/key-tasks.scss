@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-key-task {
+	width:100%;
+	flex-grow:1;
+	padding: space-px(600);
+	border-radius: radius-px(600);
+	border:1px solid colorSet("ash", 100);
+	background: colorSet("ash", 50);
+
+	h3 {
+		font-weight:600;
+	}
+
+	@include breakpoint("lg") {
+		width:25%;
+		padding: space-px(800);		
+	}
+
+	&__num {
+		font-family: font("display"), Helvetica, Arial, sans-serif;
+		font-size: fontsize-px(700);
+		color:colorSet("plum", 500);
+		font-weight:800;
+		line-height:100%;
+
+		@include breakpoint("lg") {
+			font-size:fontsize-px(800);
+		}
+	}
+}

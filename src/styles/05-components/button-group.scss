@@ -1,0 +1,18 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-button-group {
+	display:flex;
+	gap:space-px(300);
+	align-items:center;
+
+	.c-button {
+		width:100%;
+		text-align:center;
+
+		@include breakpoint("lg") {
+			width:unset;
+		}
+	}
+}

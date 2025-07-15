@@ -83,3 +83,12 @@ $lineHeight: map.get(config.$token-scales, "lineheight");
 		}
 	}
 }
+
+
+.u-list-inside {
+	list-style-position:inside;
+}
+
+.u-list-outside {
+	list-style-position: outside;
+}

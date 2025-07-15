@@ -1,0 +1,45 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(colorSet("plum", 100), .65);;
+  backdrop-filter: blur(4px);
+  color:colorSet("plum", 700);
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transform:translateY(1.75rem);
+  transition: all 0.4s ease;
+  z-index: 4;
+
+  &:hover {
+  	background-color: rgba(colorSet("plum", 100), .45);
+  }
+
+  .icon {
+  	width:1rem;
+  	height:1rem;
+  }
+}
+
+.c-back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform:translateY(0);  
+}
+
+.c-back-to-top:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}

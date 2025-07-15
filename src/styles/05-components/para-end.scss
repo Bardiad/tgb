@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-para-end {
+	display:inline-block;
+	height:12px;
+	width:12px;
+	border-radius:2px;
+	background-color: colorSet("plum", 500);
+
+	@include breakpoint("lg") {
+		width:14px;
+		height:14px;
+	}
+}

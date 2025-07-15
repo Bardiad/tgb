@@ -137,3 +137,21 @@
     }    
   }
 }
+
+
+.u-bg-blur {
+  backdrop-filter: blur(3px);
+}
+
+.u-inset-shadow-light {
+  box-shadow: inset 0 0 10px #fff;
+}
+
+.u-img-max-width {
+  max-width:100%;
+  height:auto;
+}
+
+.u-blend-multiply {
+  mix-blend-mode: multiply;
+}
