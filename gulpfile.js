@@ -10,6 +10,7 @@ import * as html_tasks from './gulp/tasks/html.js';
 import * as sass_tasks from './gulp/tasks/scss.js';
 import * as img_tasks from './gulp/tasks/imgs.js';
 import * as js_tasks from './gulp/tasks/scripts.js';
+import { revision, revUpdateRefs } from './gulp/tasks/rev.js';
 
 import connect from 'gulp-connect';
 
@@ -56,12 +57,24 @@ function inlineCriticalCSS() {
 }
 
 function _clean(callback) {
-  console.log('Cleaning', globalThis.BUILD_PATH);
 
   return src(
-    [globalThis.BUILD_PATH, "!" + globalThis.BUILD_PATH + "/img/"],
+    [globalThis.BUILD_PATH],
     { read: false, allowEmpty: true }
   ).pipe(clean());
+}
+
+function _cleanRevs() {
+  return src(
+    [
+      'css/*-??????????.css',
+      'js/*-??????????.js',
+      'img/**/*-??????????.@(png|jpg|jpeg|svg|gif)'    
+    ],
+    { cwd: globalThis.BUILD_PATH,
+      read: false,
+      allowEmpty: true }
+  ).pipe(clean({ force: true }));
 }
 
 function _copyOldSite() {
@@ -69,25 +82,27 @@ function _copyOldSite() {
     .pipe(dest(globalThis.BASE_PATH + '/dist/old'));
 }
 
-
 function _watchFiles(callback) {
   console.log("Watching files...");
   watch(config.project.watch, _buildTasks);
   callback();
 }
 
-const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts, _copyOldSite, inlineCriticalCSS);
+const _buildTasks = series(_clean, _optimizeImgs, _buildStyles, _buildHTML, _buildScripts, _copyOldSite);
 const _serve      = parallel(_buildTasks, _startConnect, _watchFiles);
+const _deployTasks = series(_cleanRevs, revision, revUpdateRefs, inlineCriticalCSS);
 
 // Task exports
 export default _serve;
 export { _serve as serve };
 export { _watchFiles as watch };
 export { _clean as clean };
+export { _cleanRevs as cleanRevs };
 export { _startConnect as connect };
 
 export { _buildHTML as "build:html" };
 export { _buildStyles as "build:css" };
 export { _buildTasks as "build:all" };
 export {_copyOldSite as "copy:old"};
-export {inlineCriticalCSS as "lnlineCritical"}
+export {_deployTasks as 'prep:deploy'};
+
