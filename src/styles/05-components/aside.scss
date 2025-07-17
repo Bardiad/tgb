@@ -5,11 +5,15 @@
 
 .c-aside {
 	border-radius: radius-px(400);
-	border:1px solid colorSet("ash", 100);
-	//background: colorSet("ash", 50);
-	padding:space-px(700);
+	//border:1px solid colorSet("ash", 100);
+	background: colorSet("ash", 50);
+	padding:space-px(600);
 
 	.body-copy {
 		line-height:135%
+	}
+
+	@include breakpoint("lg") {
+		padding:space-px(700);
 	}
 }

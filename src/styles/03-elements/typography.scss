@@ -232,12 +232,12 @@ p {
 
 	&--large {
 		font-size: 18px;
-		line-height: 135%;
+		line-height: 155%;
 		letter-spacing: letterspace-px(300);
 
 		@include breakpoint('xl') {
 			font-size: fontsize-px(400);
-			line-height: lineheight-px(400);
+			// line-height: lineheight-px(400);
 			letter-spacing: letterspace-px(400);			
 		}
 	}

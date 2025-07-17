@@ -64,10 +64,10 @@
 
 	&__panel {
 		padding:0 space-px(500) space-px(500);
-		font-size: fontsize-px(300);
-		line-height:140%;
+		// font-size: fontsize-px(300);
+		// line-height:140%;
 		color:colorSet("ash", 500);
-		font-weight:400;			
+		// font-weight:400;			
 
 		@include breakpoint("lg") {
 			//padding:0 space-px(500) space-px(300);

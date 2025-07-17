@@ -19,12 +19,15 @@
 		margin-right: space-px(0);
 		border-radius: radius-px(400);
 
+		@include custombp(320) {
+			font-size: fontsize-px(600);
+		}
 		@include custombp(480) {
-			font-size: fontsize-px(500);
+			font-size: fontsize-px(700);
 		}
 
 		@include custombp(895) {
-			font-size: fontsize-px(700);
+			font-size: fontsize-px(800);
 		}		
 	}
 
