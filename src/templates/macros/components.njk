@@ -4,6 +4,7 @@
 	<div class="c-accordion-item">
 		<h3 class="c-accordion-item__header">
 			<button
+				data-gtag-event="open_all_{{id}}" 
 				class="c-accordion-item__trigger"
 				aria-expanded="false"
 				aria-controls="{{ id }}-panel"
@@ -19,7 +20,7 @@
 		role="region"
 		aria-labelledby="{{ id }}-trigger"
 		hidden >
-			{{ content | safe }}
+			<p class="body-copy">{{ content | safe }}</p>
 		</div>
 	</div>	
 {% endmacro %}
@@ -39,6 +40,7 @@
 
 		<div class="u-flex u-margin-t-500">
 			<button
+				data-gtag-event="open_all_accordions" 
 				data-accordion-toggle 
 				class="accordion-toggle-all c-button c-button--tertiary c-button--xsmall" 
 				aria-expanded="false"

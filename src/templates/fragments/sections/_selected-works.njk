@@ -1,8 +1,8 @@
 <section id="projects" class="c-posts u-bg-color-misc-white u-padding-y-1000 u-padding-y-1500-@xl">
 	<div class="o-container">
-		<article class="c-banner c-banner--small c-banner--info u-margin-b-900">
-			<h2 class="c-banner__heading heading-4 u-text-align-left-@lg">Not everything’s here yet, but it’s on the way.</h2>
-			<p class="c-banner__description u-text-align-left-@lg">While I add more case studies, feel free to explore my 2015–2018 work on the <a href="old/">previous version of my site</a>.</p>
+		<article class="c-banner c-banner--small c-banner--info u-margin-b-1200">
+			<h2 class="c-banner__heading heading-4 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>
+			<p class="c-banner__description u-text-align-left">More case studies are on the way, in the mean time you can see my work from 2015-2018 on the <a href="old/">previous version of my site</a>.</p>
 		</article>
 		<h2 class="u-margin-b-900-@xl u-margin-b-600-@xs w-100">Selected works</h2>
 		{% for post in data.POSTS %}
@@ -20,7 +20,7 @@
 					{% if post.comingSoon %}
 						<p class="u-font-size-300 u-text-italic">Case study coming soon</p>
 					{% else %}
-						<a href="/case-studies/{{ post.slug }}.html" class="c-button c-button--secondary c-button--small c-button--fw-@xs c-button--ib-@lg">Read case study</a>
+						<a data-gtag-event="case_study_{{post.slug}}" href="/case-studies/{{ post.slug }}.html" class="c-button c-button--secondary c-button--small c-button--fw-@xs c-button--ib-@lg">Read case study</a>
 					{% endif %}						
 				</div>
 

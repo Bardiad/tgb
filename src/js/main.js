@@ -1,4 +1,5 @@
 import { attachConfettiEffect } from './utils/confetti.js';
+import { trackEvent } from './utils/analytics.js'
 
 
 // DOM Ready utility
@@ -74,6 +75,16 @@ onDOMReady(() => {
         toggleAll.setAttribute('aria-expanded', allExpanded);
         toggleAll.textContent = allExpanded ? 'Collapse all' : 'Expand all';        
       });
+    });
+  });
+
+  //Custom even tracking for buttons
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('[data-gtag-event]');
+    if (!btn) return;
+    trackEvent(btn.dataset.gtagEvent, {
+      category: 'button',
+      label: btn.textContent.trim()
     });
   });
 
@@ -226,6 +237,7 @@ onDOMReady(() => {
     ticking = false;
   }
 
+  //throttle scoll events
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(handleScroll);
