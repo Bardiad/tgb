@@ -44,6 +44,8 @@
 	text-align:left;
 
 	a {
+		font-size: fontsize-px(500);			
+	
 		@include custombp(320) {
 
 		}
