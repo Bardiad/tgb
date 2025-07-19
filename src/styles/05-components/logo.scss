@@ -20,10 +20,15 @@
 		border-radius: radius-px(400);
 
 		@include custombp(320) {
-			font-size: fontsize-px(600);
+			font-size: 32px;
 		}
+
+		@include custombp(350) {
+			font-size:34px;
+		}
+		
 		@include custombp(480) {
-			font-size: fontsize-px(700);
+			font-size: 38px;
 		}
 
 		@include custombp(895) {
@@ -37,6 +42,16 @@
 		margin-bottom:space-px(0);			
 	}
 
+}
+
+.c-logo--header {
+	a {
+
+
+		@include custombp(480) {
+
+		}
+	}
 }
 
 .c-logo--footer {
