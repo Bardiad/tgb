@@ -9,24 +9,26 @@
 	
 	li {
 		display:inline-block;
-		padding-right: space-px(500);
+		padding-right: space-px(600);
 
 		&:last-of-type {
 			padding-right:0;
 		}
 
 		a {
-			font-size: 20px;
+			font-size: 28px;
 			line-height: 100%;
-			padding: space-px(200) 0;			
+			//padding: space-px(200) 0;			
 			text-decoration:none;
 			color:colorSet("ash", 900);
 			display:block;
 			font-weight:500;
 			cursor:pointer;
+			text-decoration-color: colorSet("plum", 500);			
 
 			&:hover {
 				text-decoration: underline;
+
 			}
 		}
 

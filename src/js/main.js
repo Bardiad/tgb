@@ -17,6 +17,10 @@ onDOMReady(() => {
   html.classList.remove('no-js');
   html.classList.add('js');
 
+  const FOCUSABLE_SELECTORS =
+        'a[href], area[href], input:not([disabled]), select:not([disabled]), ' +
+        'textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';  
+
   MicroModal.init();
 
   const yearEl = document.querySelector(".js-year");
@@ -159,7 +163,6 @@ onDOMReady(() => {
           }, 5000);
       });
     }
-
   });
 
   function showOverlay() {
@@ -254,35 +257,124 @@ onDOMReady(() => {
   //Mobile menu handle esc
   const mobileNav = document.querySelector('.c-mobile-nav');
   const toggleBtn = document.querySelector('.c-mobile-nav__toggle');
+  const menuBg  = mobileNav.querySelector('.c-mobile-nav__menu');
+  const links   = mobileNav.querySelectorAll('.c-mobile-nav__item a');
+  const closeIcon = mobileNav.querySelector('.icon--close');
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mobileNav.open) {
-      // Close the <details>
-      mobileNav.removeAttribute('open');
-      // Return focus to the toggle for accessibility
-      toggleBtn.focus();
+  let focusableEls = [];
+  let firstFocusable, lastFocusable, prevActive;  
+
+  mobileNav.addEventListener('toggle', () => {
+    // If it just closed, wipe out any leftover animations
+    if (!mobileNav.open) {
+      // 1) nuke inline animation styles
+      menuBg.style.animation = 'none';
+      links.forEach(a => a.style.animation = 'none');
+
+      // 2) force a reflow so the UA forgets them
+      void menuBg.offsetWidth;
+      links.forEach(a => void a.offsetWidth);
+
+      // 3) remove our inline overrides so CSS animations apply next time
+      menuBg.style.animation = '';
+      links.forEach(a => a.style.animation = '');
+    }
+
+    handleToggle();
+  });
+
+  function handleToggle() {
+    if (mobileNav.open) {
+      // store where we came from
+      prevActive = document.activeElement;
+
+      // collect & identify first/last
+      focusableEls = Array.from(menuBg.querySelectorAll(FOCUSABLE_SELECTORS))
+        .filter(el => el.offsetParent !== null); // only visible
+      firstFocusable = focusableEls[0];
+      lastFocusable  = focusableEls[focusableEls.length - 1];
+
+      // send focus into the menu
+      firstFocusable?.focus();
+
+      // trap Tab/Shift+Tab / and handle Esc
+      document.addEventListener('keydown', trapTab);
+    } else {
+      document.removeEventListener('keydown', trapTab);
+      // restore focus
+      (prevActive || toggleBtn).focus();
+    }
+  }
+
+  function trapTab(e) {
+    if (!mobileNav.open) return;
+
+    switch (e.key) {
+      case 'Tab':
+        if (focusableEls.length === 0) {
+          e.preventDefault();
+          break;
+        }
+        if (e.shiftKey) {
+          // SHIFT + TAB on first -> go to last
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          // TAB on last -> go to first
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+        break;
+      case 'Escape':
+        // close on Esc
+        mobileNav.open = false;
+        break;
+    }
+  }  
+
+  function closeMobileMenu() {
+    mobileNav.open = false;
+    toggleBtn.focus();
+  }
+
+  menuBg.querySelectorAll('a[href*="#"]').forEach(link => {
+    link.addEventListener('click', (e) => { 
+
+      mobileNav.open = false;
+
+      // figure out the anchor name
+      const url      = new URL(link.getAttribute('href'), window.location.href);
+      const samePage = url.pathname === window.location.pathname;
+
+      if (samePage && url.hash) {
+        e.preventDefault();
+        
+        setTimeout(() => {
+          const target = document.getElementById(url.hash.slice(1));
+
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' })
+          }
+          history.replaceState(null, '', hash);
+        }, 0);           
+      }
+   
+      
+    });
+  });
+
+  closeIcon.addEventListener('click', closeMobileMenu);
+
+  closeIcon.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      closeMobileMenu();
     }
   });
 
-
-    const menuBg  = mobileNav.querySelector('.c-mobile-nav__menu');
-    const links   = mobileNav.querySelectorAll('.c-mobile-nav__item a');
-
-    mobileNav.addEventListener('toggle', () => {
-      // If it just closed, wipe out any leftover animations
-      if (!mobileNav.open) {
-        // 1) nuke inline animation styles
-        menuBg.style.animation = 'none';
-        links.forEach(a => a.style.animation = 'none');
-
-        // 2) force a reflow so the UA forgets them
-        void menuBg.offsetWidth;
-        links.forEach(a => void a.offsetWidth);
-
-        // 3) remove our inline overrides so CSS animations apply next time
-        menuBg.style.animation = '';
-        links.forEach(a => a.style.animation = '');
-      }
-    }); 
 
 });

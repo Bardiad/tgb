@@ -1,22 +1,29 @@
-<nav class="o-nav-container">
+<div class="o-nav-container">
 	<ul class="c-primary-nav u-hide-@xs u-show-@lg" role="navigation">
-		<li><a href="/">work</a></li>
+		<li><a href="/index.html#projects">work</a></li>
 		<li><a href="/about.html">about</a></li>
 		<li><a href="/contact.html">contact</a></li>
 	</ul>
 	<details class="c-mobile-nav u-hide-@lg">
-		<summary class="c-mobile-nav__toggle">
-			<svg class="icon">
+		<summary class="c-mobile-nav__toggle" aria-controls="mobile-menu">
+			<svg class="icon icon--bars" aria-hidden="true" focusable="false">
 				<use href="#bars"></use>
 			</svg>
-			<span class="u-hide-visually">Toggle menu</span>
+
+			<span class="u-sr-only">Toggle menu</span>
 		</summary>
 		<nav id="mobile-menu" class="c-mobile-nav__menu" role="navigation" aria-label="Main Menu">
-		<ul class="c-mobile-nav__list">
-		  <li class="c-mobile-nav__item"><a href="/work">Work</a></li>
-		  <li class="c-mobile-nav__item"><a href="/about">About</a></li>
-		  <li class="c-mobile-nav__item"><a href="/contact">Contact</a></li>
-		</ul>
+			<ul class="c-mobile-nav__list">
+			  <li class="c-mobile-nav__item"><a href="/index.html#projects">Projects</a></li>
+			  <li class="c-mobile-nav__item"><a href="/about.html">About</a></li>
+			  <li class="c-mobile-nav__item"><a href="/contact.html">Contact</a></li>
+			</ul>
+			<svg class="icon icon--close"
+				 role="button"
+    			 tabindex="0"
+    			 aria-label="Close menu">
+    			 <use href="#xmark"></use>
+    		</svg>
 		</nav>		
 	</details>
-</nav>
+</div>

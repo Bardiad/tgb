@@ -1,0 +1,15 @@
+---
+PAGE:
+ title: About that Guy Bardia | UX & UI Designer Specializing in Design Systems, Front-End Development and Growth UX
+ description: Find out more about me
+ layout: layout.landing.njk
+---
+{% extends "layouts/" + PAGE.layout %}
+
+{% block body %}
+
+{{ super()}}
+<div class="u-bg-color-ash-200">
+{% include "fragments/sections/_about-me.njk" %}
+</div>
+{% endblock %}

@@ -68,13 +68,13 @@
 	  font-weight: 500;
 	}
 
-	&__submit {
-		width:100%;
+	// &__submit {
+	// 	width:100%;
 
-		@include breakpoint("lg") {
-			width:unset;
-		}
-	}
+	// 	@include breakpoint("lg") {
+	// 		width:unset;
+	// 	}
+	// }
 
 	textarea {
 		max-height:320px;

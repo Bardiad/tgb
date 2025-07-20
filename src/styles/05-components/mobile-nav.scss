@@ -1,0 +1,110 @@
+@use "sass:map";
+@use "00-settings" as config;
+@use "01-tools/functions" as *;
+
+.c-mobile-nav {
+	position:relative;
+	z-index:1000;
+
+	&__menu {
+		position:fixed;
+		top:0; left:0;
+		right:0; bottom:0;
+		background:colorSet("misc", "white");
+		opacity:0;
+		pointer-events:none;
+		display:flex;
+		align-items:center;
+		justify-content: center;
+	}
+
+	&__toggle {
+		&::-webkit-details-marker {
+			display:none;
+		}
+
+		list-style:none;
+		line-height:0;
+		border:none;
+		background:none;
+		cursor:pointer;
+		position:relative;
+	}
+
+	&__list {
+		list-style:none;
+		margin:0;
+		padding:0;
+		text-align:center;
+	}
+
+	&__item {
+		margin-bottom:space-px(300);
+
+		&:last-of-type {
+			margin-bottom:0;
+		}
+
+		a {
+			display:inline-block;
+			font-size:3rem;
+			opacity:0;
+			filter: blur(4px);
+			text-decoration:none;
+		}
+	}
+
+	.icon--close {
+		display:none;
+		z-index:1001;
+		position:absolute;
+		top:1.5rem;
+		right:1rem;
+		cursor:pointer;
+		width:2.25rem;
+		height:2.25rem;
+	}
+
+	.c-mobile-nav__toggle:focus-visible,
+	.c-mobile-nav__item a:focus-visible,
+	.icon--close:focus-visible {
+		border-radius:2px;
+		outline-offset:6px;
+	}
+
+	&[open] {
+		.c-mobile-nav__menu {
+			pointer-events:auto;
+			animation: fadeBg 200ms ease forwards;
+		}
+
+		.c-mobile-nav__item a {
+			animation: 
+		    fadeIn 400ms ease var(--delay) forwards,
+    		blurToFocus 400ms ease calc(var(--delay) + 200ms) forwards;
+		}
+
+		.icon--close {display:inline;}
+
+		.icon--bars {display:none;}	
+	} 
+}
+
+.c-mobile-nav__item:nth-child(1) { --delay: 0ms; }
+.c-mobile-nav__item:nth-child(2) { --delay: 200ms; }
+.c-mobile-nav__item:nth-child(3) { --delay: 300ms; }
+
+@keyframes fadeBg {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes blurToFocus {
+  from { filter: blur(4px); }
+  to   { filter: blur(0); }
+}
+
+
