@@ -251,4 +251,38 @@ onDOMReady(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  //Mobile menu handle esc
+  const mobileNav = document.querySelector('.c-mobile-nav');
+  const toggleBtn = document.querySelector('.c-mobile-nav__toggle');
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.open) {
+      // Close the <details>
+      mobileNav.removeAttribute('open');
+      // Return focus to the toggle for accessibility
+      toggleBtn.focus();
+    }
+  });
+
+
+    const menuBg  = mobileNav.querySelector('.c-mobile-nav__menu');
+    const links   = mobileNav.querySelectorAll('.c-mobile-nav__item a');
+
+    mobileNav.addEventListener('toggle', () => {
+      // If it just closed, wipe out any leftover animations
+      if (!mobileNav.open) {
+        // 1) nuke inline animation styles
+        menuBg.style.animation = 'none';
+        links.forEach(a => a.style.animation = 'none');
+
+        // 2) force a reflow so the UA forgets them
+        void menuBg.offsetWidth;
+        links.forEach(a => void a.offsetWidth);
+
+        // 3) remove our inline overrides so CSS animations apply next time
+        menuBg.style.animation = '';
+        links.forEach(a => a.style.animation = '');
+      }
+    }); 
+
 });

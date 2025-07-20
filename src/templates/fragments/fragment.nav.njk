@@ -4,9 +4,19 @@
 		<li><a href="/about.html">about</a></li>
 		<li><a href="/contact.html">contact</a></li>
 	</ul>
-	<div class="c-hamburger u-hide-@lg">
-		<svg class="icon">
-			<use href="#bars"></use>
-		</svg>
-	</div>
+	<details class="c-mobile-nav u-hide-@lg">
+		<summary class="c-mobile-nav__toggle">
+			<svg class="icon">
+				<use href="#bars"></use>
+			</svg>
+			<span class="u-hide-visually">Toggle menu</span>
+		</summary>
+		<nav id="mobile-menu" class="c-mobile-nav__menu" role="navigation" aria-label="Main Menu">
+		<ul class="c-mobile-nav__list">
+		  <li class="c-mobile-nav__item"><a href="/work">Work</a></li>
+		  <li class="c-mobile-nav__item"><a href="/about">About</a></li>
+		  <li class="c-mobile-nav__item"><a href="/contact">Contact</a></li>
+		</ul>
+		</nav>		
+	</details>
 </nav>
