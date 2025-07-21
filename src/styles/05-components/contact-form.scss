@@ -50,7 +50,7 @@
 	  align-items: center;
 	  justify-content: center;
 	  flex-direction: column;
-	  z-index: 1000;
+	  z-index: include z("modal");
 	  text-align: center;
 	  padding: 2rem;
 	  opacity: 0;

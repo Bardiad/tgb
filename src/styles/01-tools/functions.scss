@@ -130,3 +130,11 @@ $baseFontSize: 16;
       @error "Unknown media type `#{$type}`. Use `min` or `max`.";
   }
 }
+
+@mixin z($layer) {
+  @if map.has-key(config.$token-z-index, $layer) {
+    z-index: map.get(config.$token-z-index, $layer);
+  } @else {
+    @warn "⚠️ z-index layer `#{$layer}` not found!";
+  }
+}

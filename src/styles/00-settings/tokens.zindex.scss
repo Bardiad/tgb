@@ -1,0 +1,12 @@
+$z-index: (
+  base: 0,          // hero, sections, images
+  confetti: 5,
+  header: 10,       // sticky header/nav
+  fixed-btn: 15,    // scroll-to-top or floating buttons
+  dropdown: 100,    // dropdown menus, hover cards
+  mobile-nav: 110,  // full-screen mobile menu overlay
+  modal: 1000,      // contact form modal
+  lightbox: 1010,   // gallery lightbox
+  toast: 9000,      // toast notifications
+  emergency: 9999   // top-priority banners
+);
