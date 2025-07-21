@@ -1,0 +1,32 @@
+---
+PAGE:
+ title: Get in touch | UX & UI Designer Specializing in Design Systems, Front-End Development and Growth UX
+ description: Find out how you can connect with me
+ layout: layout.landing.njk
+---
+{% extends "layouts/" + PAGE.layout %}
+
+{% block body %}
+
+{{ super()}}
+<section class="u-bg-color-ash-100 u-background-gradient u-padding-b-1100 u-padding-b-1500-@xl">
+	<div class="o-container">
+		<div class="u-flex flex-wrap flex-nowrap-@lg gap-1100 gap-700-@lg w-100">
+			<div aria-hidden="true" class="w-100 w-33-@lg">
+				<div class="w-100 w-80-@lg">
+					<h3 class="u-margin-b-500">Connect with me on social</h3>
+					<ul>
+						<li>LinkedIn</li>
+						<li>Instagram</li>
+						<li>Github</li>
+					</ul>
+				</div>
+			</div>
+			<div class="w-100 w-66-@lg">
+				{% set align = "left" %}
+				{% include "fragments/fragment.contact-form.njk"%}
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

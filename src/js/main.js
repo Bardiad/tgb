@@ -1,6 +1,7 @@
 import { attachConfettiEffect } from './utils/confetti.js';
 import { trackEvent } from './utils/analytics.js'
 
+const isTesting = true;
 
 // DOM Ready utility
 function onDOMReady(callback) {
@@ -104,7 +105,7 @@ onDOMReady(() => {
     e.preventDefault();
 
 
-    const isTesting = false;
+
     // Convert form to JSON
     const formData = new FormData(contactForm);
     const object = Object.fromEntries(formData);
@@ -226,6 +227,11 @@ onDOMReady(() => {
   const triggerOffset = 300;
 
   function handleScroll() {
+
+    if (!backToTopBtn) {
+      return;
+    }
+    
     const currentScrollY = window.scrollY;
     const isScrollingUp = currentScrollY < lastScrollY;
     const hasPassedThreshold = currentScrollY > triggerOffset;
