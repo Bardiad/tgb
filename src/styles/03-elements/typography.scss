@@ -75,24 +75,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .display-3 {
-	font-size: fontsize-px(400);
+	font-size: 24px; //21
 	line-height:120%;
 	letter-spacing: letterspace-px(400);
 
 	@include breakpoint("sm") {
-		font-size: fontsize-px(500);
+		font-size: 30px;
 		// line-height: lineheight-px(500);
 		letter-spacing: letterspace-px(500);
 	}
 
 	@include breakpoint("xl") {
-		font-size: fontsize-px(600);
+		font-size: fontsize-px(600); //38
 		// line-height: lineheight-px(600);
 		letter-spacing: letterspace-px(600);
 	}	
 
 	@include breakpoint("xxl") {
-		font-size: fontsize-px(700);
+		font-size: fontsize-px(700); //51
 		// line-height: lineheight-px(700);
 		letter-spacing: letterspace-px(700);
 	}
