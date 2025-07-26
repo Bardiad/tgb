@@ -1,0 +1,19 @@
+<section id="brands" class="u-padding-y-500 u-padding-y-1300-@xl">
+	<div class="o-fluid-width-container o-fluid-width-container--full-bleed">
+	<div class="o-container u-margin-b-500 u-margin-b-900-@lg"><h2 class="heading-1">Organizations I've worked with</h2></div>
+	{% set brandLogos = [
+		{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
+		{src: "img/logos/questrade.svg", alt: "Questrade"},
+		{src: "img/logos/unifor.png", alt: "Unifor"},
+		{src: "img/logos/cpacanada.png", alt: "Chartered Professional Accountants Canada"},
+		{src: "img/logos/ocadu.png", alt: "OCAD University"},
+		{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
+		{src: "img/logos/questrade.svg", alt: "Questrade"},
+		{src: "img/logos/unifor.png", alt: "Unifor"},
+		{src: "img/logos/cpacanada.png", alt: "Chartered Professional Accountants Canada"},
+		{src: "img/logos/ocadu.png", alt: "OCAD University"}							
+	] %}
+	{{ components.marquee(brandLogos) }}	
+	</div>
+</section>
+
