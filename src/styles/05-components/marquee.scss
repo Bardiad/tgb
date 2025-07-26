@@ -1,0 +1,57 @@
+@use "sass:map";
+@use "../00-settings" as config;
+@use "../01-tools/functions" as *;
+
+.c-marquee {
+	--marqueeGap: #{space-px(800)};
+	display: flex;
+	overflow: hidden; 
+	background: colorSet("ash", 100);
+	padding: space-px(800) 0;
+	gap: var(--marqueeGap);	
+  	user-select: none;
+	mask-image: linear-gradient(
+		to right,
+		hsl(0 0% 0% / 0),
+		hsl(0 0% 0% / 1) 20%,
+		hsl(0 0% 0% / 1) 80%,
+		hsl(0 0% 0% / 0)
+	);  	
+
+
+	&__track {
+		display: flex;
+		flex-shrink: 0; // prevent collapsing
+		gap: var(--marqueeGap);
+		min-width: 100%;
+		align-items: center;
+		animation: marquee-scroll linear infinite;
+	}
+
+	&__item {
+		flex: 0 0 auto;
+		padding:space-px(800);
+		border-radius:radius-px(400);
+		background:colorSet("ash", 50);
+
+		img {
+			display: block;
+			height: 60px; 
+			//filter:grayscale(1);
+			opacity:.85;		
+		}
+	}
+
+  &--slow   .c-marquee__track { animation-duration: 60s; }
+  &--medium .c-marquee__track { animation-duration: 20s; }
+  &--fast   .c-marquee__track { animation-duration: 10s; }  
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--marqueeGap))); 
+  }
+}

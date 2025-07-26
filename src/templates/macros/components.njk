@@ -52,9 +52,30 @@
 {% endmacro %}
 
 {% macro backToTop() %}
-<a href="#top" class="c-back-to-top" aria-label="Back to top">
-  <svg class="icon" aria-hidden="true"><use href="#chevron-up" /></svg>
-  <span class="c-back-to-top__label">Back to top</span>
-</a>
+	<a href="#top" class="c-back-to-top" aria-label="Back to top">
+	  <svg class="icon" aria-hidden="true"><use href="#chevron-up" /></svg>
+	  <span class="c-back-to-top__label">Back to top</span>
+	</a>
+{% endmacro %}
+
+{% macro marquee(imgs=[], speed='slow') %}
+	{% set speedClass = "c-marquee--" + speed %}
+	<div class="c-marquee {{ speedClass }}">
+		<div class="c-marquee__track">
+			{% for img in imgs %}
+				<div class="c-marquee__item">
+					<img src="{{ img.src }}" alt="{{ img.alt }}"/>
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="c-marquee__track" aria-hidden="true">
+			{% for img in imgs %}
+				<div class="c-marquee__item">
+					<img src="{{ img.src }}" alt="{{ img.alt }}"/>
+				</div>
+			{% endfor %}			
+		</div>
+	</div>
 {% endmacro %}
 
