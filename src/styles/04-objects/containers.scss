@@ -30,16 +30,6 @@
 	}
 }
 
-.right-container {
-	padding-left:0;
-	margin-left:0;
-	width:100%;
-
-	@include breakpoint("lg") {
-		margin-left: calc(33.3333% + #{space-px(700)});
-		width: calc((100% - #{space-px(700)}) * 0.666666);
-	}
-}
 
 .o-max-width-container {
 	display:flex;
@@ -51,17 +41,36 @@
 	max-width:config.$container-max-width;
 	padding:0 config.$outer-margin-sm;
 
+
+	&--full-bleed {
+		padding-left:0;
+		padding-right:0;
+	}
+
 	@include custombp(895){
 		padding:0 config.$outer-margin-lg;		
 	}
+
 }
 
 .o-fluid-width-container {
 	width:100%;
 	padding:0 config.$outer-margin-sm;
 
+
+	&--full-bleed {
+		padding-left:0;
+		padding-right:0;
+	}
+
 	@include custombp(895){
 		padding:0 config.$outer-margin-lg;		
+		
+		&--full-bleed {
+			padding-left:0;
+			padding-right:0;
+		}
+
 	}	
 }
 
