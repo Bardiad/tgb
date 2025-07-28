@@ -2,7 +2,7 @@
 	<div class="o-container">
 
 		<h2 class="heading-1 u-margin-b-900-@xl u-margin-b-600-@xs w-100">Selected works</h2>
-		{% for post in data.POSTS %}
+{# 		{% for post in data.POSTS %}
 			<article class="c-post u-flex u-justify-content-center-@xs gap-200-@xs gap-800-@lg gap-1700-@xxl flex-wrap-@xs flex-nowrap-@lg {% if loop.last %} u-margin-b-1200{% endif %}">
 				<div class="c-post__content w-100-@xs w-50-@lg w-40-@xxl">
 					<p class="c-post__meta u-color-ash-800 u-margin-t-300-@xs u-margin-t-0-@xl">{{ post.year }}</p>				
@@ -33,7 +33,30 @@
 				</a>
 				{% endif %}				
 			</article>
-		{% endfor %}
+		{% endfor %} #}
+
+		{% set gridLayout = [
+		  { col: 'grid-col-6', colStart: 'col-start-1', rowStart: 'row-1' },
+		  { col: 'grid-col-6', colStart: 'col-start-7', rowStart: 'row-1' },
+		  { col: 'grid-col-4', colStart: 'col-start-1', rowStart: 'row-2' },
+		  { col: 'grid-col-4', colStart: 'col-start-5', rowStart: 'row-2' },
+		  { col: 'grid-col-4', colStart: 'col-start-9', rowStart: 'row-2' }
+		] %}
+
+
+		<div class="grid grid-2-rows">
+		  {% for post in data.POSTS %}
+		    {% set layout = gridLayout[loop.index0] %}
+		    <article class="c-post {{ layout.col }} {{ layout.colStart }} {{ layout.rowStart }}">
+		      {# your card content here #}
+		      <div class="c-post__content">
+		        <h3>{{ post.headline }}</h3>
+		        <p>{{ post.description }}</p>
+		        {# etc. #}
+		      </div>
+		    </article>
+		  {% endfor %}
+		</div>
 
 		<article class="c-banner c-banner--small c-banner--info">
 			<h2 class="c-banner__heading heading-4 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>

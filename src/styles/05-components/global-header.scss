@@ -9,7 +9,8 @@
 	align-items:center;
 	justify-content:space-between;
 	width:100%;
-	padding:space-px(600) config.$outer-margin-sm;
+	padding-top:space-px(600);
+	padding-bottom:space-px(600);
 
 	&--sticky {
 		position:sticky;
@@ -39,7 +40,8 @@
 	}
 
 	@include custombp(895) {
-		padding:space-px(800) config.$outer-margin-lg;		
+		padding-top:space-px(800);
+		padding-bottom:space-px(800);		
 	}
 }
 
