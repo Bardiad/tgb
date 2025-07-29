@@ -56,7 +56,7 @@
 		}
 	}
 
-  &--slow   .c-marquee__track { animation-duration: 50s; }
+  &--slow   .c-marquee__track { animation-duration: 60s; }
   &--medium .c-marquee__track { animation-duration: 20s; }
   &--fast   .c-marquee__track { animation-duration: 10s; }  
 }
