@@ -31,6 +31,14 @@ $baseFontSize: 16;
   @return convert-pxToRem(space($key));
 }
 
+@function getWidth($key) {
+  @return getScale("percent-width", $key);
+}
+
+@function width-percent($key) {
+  @return #{getWidth($key)};
+}
+
 @function size($key) {
   @return getScale("size", $key);
 }

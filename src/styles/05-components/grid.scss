@@ -11,21 +11,22 @@ $spaces : map.get(config.$token-scales, "space");
 
 .grid {
 	display:grid;
-	grid-template-columns: repeat($columns, 1fr);
+	grid-template-columns: repeat($columns, [col-start] 1fr);
 	gap:$gutter;
+	grid-auto-rows:auto;
+
+	& > * {
+		grid-column: col-start / span 12;
+	}
 }
 
-.grid-2-rows {
-	grid-template-gorws:repeat(2, 1fr);
+
+@each $bpkey, $bpvalue in config.$token-mq {
+	@include breakpoint($bpkey) {
+		@for $i from 1 through $columns {
+			.grid-col-#{$i}-\@#{$bpkey} { grid-column: span #{$i}; }
+			.col-start-#{$i}-\@#{$bpkey} { grid-column-start: #{$i}; }
+		}
+	}
 }
 
-.grid-col-6 { grid-column: span 6 / span 6; }
-.grid-col-4 { grid-column: span 4 / span 4; }
-
-.row-1 { grid-row-start: 1; }
-.row-2 { grid-row-start: 2; }
-
-.col-start-1 { grid-column-start: 1; }
-.col-start-5 { grid-column-start: 5; }
-.col-start-7 { grid-column-start: 7; }
-.col-start-9 { grid-column-start: 9; }

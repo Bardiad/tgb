@@ -15,8 +15,13 @@
 	}
 
 	&--fixed-large {
-		font-size: fontsize-px(300);
+		font-size: fontsize-px(400);
 		letter-space:0;		
+	}
+
+	&--light {
+		font-weight:600;
+		letter-spacing:1.1px;
 	}
 
 	&--fluid {

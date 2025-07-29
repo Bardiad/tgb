@@ -8,19 +8,6 @@
 
 .c-post {
 	align-items: flex-start;
-	margin-bottom:space-px(1000);
-
-	@include breakpoint("md") {
-		margin-bottom:space-px(1500);
-	}
-
-	@include breakpoint("xl") {
-		margin-bottom: space-px(2000);
-	}
-
-	&:last-of-type {
-		margin-bottom:0;
-	}
 
 	&__meta {
 		margin-bottom:space-px(100);
@@ -34,16 +21,19 @@
 		}
 	}
 
-	&__thumbnail-link {
+	&__title {
+		text-decoration: underline;
+	}	
+
+	&__thumbnail {
 		background-color: colorSet("ash", 100);
 		border-radius: radius-px(500);
 		transition: .4s background-color ease;
 		overflow:hidden;
 	}
 
-	&__thumbnail {
+	&__thumbnail-img {
 		transition: .4s transform ease;
-
 	}
 
 	&__cs-wrapper {
@@ -51,6 +41,7 @@
 		position:relative;
 		border-radius: radius-px(500);	
 		overflow:hidden;
+		cursor:auto;
 
 		img {
 			filter:grayscale(1);
@@ -80,13 +71,39 @@
 
 	}
 
-}
+	&__link-wrap {
+		text-decoration:none;
+		font-weight:initial;
+		cursor:pointer;
+		height:100%;
+		padding:space-px(600);
+		border-radius:radius-px(700);
+		background:colorSet("misc", "white");
+		border:1px solid colorSet("ash", 100);
+		transition: background .4s ease;
 
-.c-post__thumbnail-link:hover {
-	background-color: var(--thumbHover);
-	cursor:pointer;
-
-	.c-post__thumbnail {
-		transform: scale(1.05);
+		@include breakpoint("xxl") {
+			padding:space-px(700);
+		}			
 	}
 }
+
+.c-post__link-wrap:hover {
+	color:colorSet("plum", 900);
+	background:colorSet("ash", 50);
+	
+	.c-post__thumbnail {
+		background-color: var(--thumbHover);
+		cursor:pointer;
+	}
+
+	.c-post__thumbnail-img {
+		transform: scale(1.05);
+	}
+
+	.c-post__title {
+		text-decoration: none;
+	}
+}
+
+
