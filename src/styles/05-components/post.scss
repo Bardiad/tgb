@@ -14,11 +14,11 @@
 	}
 
 	&__content {
-		margin-bottom:space-px(600);
+		padding:space-px(700);
 
-		@include breakpoint("xl"){
-			margin-bottom:0;
-		}
+		@include breakpoint("xxl") {
+			padding:space-px(800);
+		}	
 	}
 
 	&__title {
@@ -26,8 +26,8 @@
 	}	
 
 	&__thumbnail {
-		background-color: colorSet("ash", 100);
-		border-radius: radius-px(500);
+		background-color: colorSet("ash", 50);
+		//border-bottom:2px solid colorSet("ash", 100);
 		transition: .4s background-color ease;
 		overflow:hidden;
 	}
@@ -76,15 +76,9 @@
 		font-weight:initial;
 		cursor:pointer;
 		height:100%;
-		padding:space-px(600);
-		border-radius:radius-px(700);
 		background:colorSet("misc", "white");
 		border:1px solid colorSet("ash", 100);
-		transition: background .4s ease;
-
-		@include breakpoint("xxl") {
-			padding:space-px(700);
-		}			
+		transition: background .4s ease;		
 	}
 }
 

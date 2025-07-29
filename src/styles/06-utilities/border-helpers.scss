@@ -51,12 +51,22 @@
 	}
 }
 
+
+.u-border-radius-0 {
+	border-radius:0;
+}
+		
+		
 @each $key, $value in config.$token-radius {
 	.u-border-radius-#{$key} {
 		border-radius:#{$value}px;
 	}
 
 	@each $bpkey, $bpvalue in config.$token-mq {
+		.u-border-radius-0-\@#{$bpkey} {
+			border-radius:0;
+		}
+
 		@include breakpoint($bpkey) {
 			.u-border-radius-#{$key}-\@#{$bpkey} {
 				border-radius:#{$value}px;

@@ -1,4 +1,4 @@
-<section id="projects" class="c-posts u-bg-color-misc-white u-padding-b-1200 u-padding-b-1800-@xl">
+<section id="projects" class="c-posts u-bg-color-misc-white u-padding-b-1000 u-padding-b-1500-@xl">
 	<div class="o-container u-text-align-center-@lg  u-margin-b-900-@xl u-margin-b-600-@xs">
 		<h2 class="heading-1 u-margin-b-300 w-100">Selected works</h2>
 		<p class="subheading-1 u-font-weight-400">Check out some of the work I'm most proud of here</p>
@@ -24,12 +24,12 @@
 		] %}
 
 
-		<div class="grid gap-400 gap-600-@lg">
+		<div class="grid gap-400 gap-0-@lg">
 		  {% for post in data.POSTS %}
 		    {% set layout = gridLayout[loop.index0] %}
 
 		    {% if post.isLast %}
-				<article class="c-banner c-banner--small c-banner--info  {{ layout.col }} {{ layout.colStart }}">
+				<article class="c-banner c-banner--small c-banner--info  {{ layout.col }} {{ layout.colStart }} u-border-radius-0">
 					<h2 class="c-banner__heading heading-4 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>					
 					<p class="c-banner__description u-text-align-left">More case studies are on the way, in the mean time you can see my work from 2015-2018 on the <a href="old/">previous version of my site</a>.</p>
 				</article>		    	
@@ -39,13 +39,13 @@
 						<a data-gtag-event="case_study_{{post.slug}}" href="/case-studies/{{ post.slug }}.html" class="u-block c-post__link-wrap">	
 			    	{% endif %}
 						{% if post.comingSoon %}
-							<div class="c-post__cs-wrapper u-border-color-ash-200 u-block u-margin-b-500">
+							<div class="c-post__cs-wrapper u-border-color-ash-200 u-block">
 								<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" class="o-fluid-img c-post__thumbnail"/>
 								<div class="c-post__thumbnail-overlay"></div>
 								<p class="c-post__cs-label">Coming soon</p>
 							</div>
 						{% else %}
-							<div class="c-post__thumbnail u-margin-b-500" style="--thumbHover: {{ post.theme }}">
+							<div class="c-post__thumbnail" style="--thumbHover: {{ post.theme }}">
 								<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" width="850" height="552" class="o-fluid-img c-post__thumbnail-img"/>
 							</div>
 						{% endif %}

@@ -152,6 +152,10 @@ $spaces : map.get(config.$token-scales, "space");
   flex-shrinkg:1;
 }
 
+.gap-0 {
+  gap:0;
+}
+
 @each $skey, $svalue in $spaces {
   .gap-#{$skey} {
     gap: #{$svalue}px;
@@ -305,6 +309,11 @@ $spaces : map.get(config.$token-scales, "space");
 
 @each $bpkey, $bpvalue in config.$token-mq {
   @include breakpoint($bpkey) {
+
+      .gap-0-\@#{$bpkey} {
+        gap:0;
+      }
+
       @each $skey, $svalue in $spaces {
         .gap-#{$skey}-\@#{$bpkey} {
           gap: #{$svalue}px;
