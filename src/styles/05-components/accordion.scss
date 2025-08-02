@@ -27,7 +27,7 @@
 		background:transparent;
 
 		padding:space-px(400) space-px(300);
-		margin:space-px(200);
+		margin:space-px(200) 0;
 		width:100%;
 		text-align:start;
 		
@@ -58,12 +58,12 @@
 
 		@include breakpoint("lg") {
 			padding:space-px(500) space-px(300);
-			margin:space-px(300);			
+			margin:space-px(300) 0;			
 		}		
 	}
 
 	&__panel {
-		padding:0 space-px(500) space-px(500);
+		padding:0 space-px(300) space-px(500);
 		// font-size: fontsize-px(300);
 		// line-height:140%;
 		color:colorSet("ash", 500);

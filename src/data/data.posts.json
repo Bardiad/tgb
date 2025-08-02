@@ -17,7 +17,7 @@
 		"tags": ["Design System", "XFN collaboration", "Visual Design"],
 		"year": 2024,
 		"theme" : "#227C20",
-		"comingSoon" : false		
+		"comingSoon" : true		
 	},
 	{
 		"slug": "CPA-member-news",
@@ -27,7 +27,7 @@
 		"tags": ["Email Design", "Front End Dev", "Visual Design"],
 		"year": 2022,
 		"theme" : "#006FBA",
-		"comingSoon" : false		
+		"comingSoon" : true		
 	},  
 	{
 		"slug": "your-perfect-lift",
@@ -37,7 +37,7 @@
 		"tags": ["Search Experience", "UX Design", "Visual Design"],
 		"year": 2017,
 		"theme" : "#EA002A",
-		"comingSoon" : false		
+		"comingSoon" : true		
 	},
 	{
 		"isLast" : true

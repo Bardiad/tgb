@@ -24,13 +24,13 @@
 		] %}
 
 
-		<div class="grid gap-400 gap-0-@lg">
+		<div class="grid gap-800 gap-0-@lg">
 		  {% for post in data.POSTS %}
 		    {% set layout = gridLayout[loop.index0] %}
 
 		    {% if post.isLast %}
 				<article class="c-banner c-banner--small c-banner--info  {{ layout.col }} {{ layout.colStart }} u-border-radius-0">
-					<h2 class="c-banner__heading heading-4 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>					
+					<h2 class="c-banner__heading subheading-1 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>					
 					<p class="c-banner__description u-text-align-left">More case studies are on the way, in the mean time you can see my work from 2015-2018 on the <a href="old/">previous version of my site</a>.</p>
 				</article>		    	
 		    {% else %}
@@ -45,7 +45,7 @@
 								<p class="c-post__cs-label">Coming soon</p>
 							</div>
 						{% else %}
-							<div class="c-post__thumbnail" style="--thumbHover: {{ post.theme }}">
+							<div class="c-post__thumbnail" style="--projTheme: {{ post.theme }}">
 								<img src="{{ post.thumbnail }}" alt="thumbnail for {{ post.headinline }}" width="850" height="552" class="o-fluid-img c-post__thumbnail-img"/>
 							</div>
 						{% endif %}

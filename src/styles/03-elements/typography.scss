@@ -259,7 +259,7 @@ p {
 
   position: relative;
   display: inline-block;
-  mix-blend-mode: hard-light;
+
 
   &:before {
     content: '';
@@ -268,8 +268,9 @@ p {
     left: -1%;
     right: -1%;
     height: 43%;
-    mix-blend-mode: hard-light;
-  	background-color: rgba(colorSet("plum", 500), 0.7); 	
+    //mix-blend-mode: hard-light;
+    z-index:-1;
+  	background-color: rgba(colorSet("plum", 400), 0.7); 	
   }
 }
 

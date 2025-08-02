@@ -113,15 +113,16 @@ input[type="submit"] {
 	}
 
 	&--secondary {
-		background-color: colorSet("plum", 100);		
-		color: colorSet("plum", 900);
-		border:1px solid rgba(colorSet("plum", 400), 0);		
+			background-color: transparent;
+			color: colorSet("plum", 800);
+			border:1px solid colorSet("plum", 400);		
 			
 		&:hover,
 		&:focus-visible {
-			background-color: transparent;
-			color: colorSet("plum", 800);
-			border-color:colorSet("plum", 400);
+			background-color: colorSet("plum", 100);		
+			color: colorSet("plum", 900);
+			border-color:rgba(colorSet("plum", 400), 0);				
+
 		}
 
 		&:active {

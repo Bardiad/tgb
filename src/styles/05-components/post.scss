@@ -9,6 +9,7 @@
 .c-post {
 	align-items: flex-start;
 
+
 	&__meta {
 		margin-bottom:space-px(100);
 	}
@@ -26,7 +27,8 @@
 	}	
 
 	&__thumbnail {
-		background-color: colorSet("ash", 50);
+		//background-color: color-mix(in srgb, var(--projTheme), #fff 90%);
+		//background-color:colorSet("plum", 100);
 		//border-bottom:2px solid colorSet("ash", 100);
 		transition: .4s background-color ease;
 		overflow:hidden;
@@ -37,9 +39,8 @@
 	}
 
 	&__cs-wrapper {
-		background-color: colorSet("ash", 100);
 		position:relative;
-		border-radius: radius-px(500);	
+		border:1px solid colorSet("ash", 100);
 		overflow:hidden;
 		cursor:auto;
 
@@ -78,7 +79,13 @@
 		height:100%;
 		background:colorSet("misc", "white");
 		border:1px solid colorSet("ash", 100);
-		transition: background .4s ease;		
+		transition: background .4s ease;
+		border-radius:radius-px(300);
+		overflow:hidden;
+
+		@include breakpoint("lg") {
+			border-radius:0;
+		}			
 	}
 }
 
@@ -87,7 +94,7 @@
 	background:colorSet("ash", 50);
 	
 	.c-post__thumbnail {
-		background-color: var(--thumbHover);
+		background-color: var(--projTheme);
 		cursor:pointer;
 	}
 
