@@ -12,27 +12,27 @@
 	a {
 		text-decoration:none;
 		color: colorSet("plum", 500);
-		font-family: font("display"), Arial, sans-serif;
-		font-size: fontsize-px(400);
+		font-family: font("heading"), Arial, sans-serif;
+		font-size: 24px;
 		line-height: 100%;	
-		font-weight: 800;
+		font-weight: 700;
 		margin-right: space-px(0);
 		border-radius: radius-px(400);
 
 		@include custombp(320) {
-			font-size: 32px;
+			font-size: 28px;
 		}
 
 		@include custombp(350) {
-			font-size:34px;
+			font-size:32px;
 		}
 		
 		@include custombp(480) {
-			font-size: 38px;
+			font-size: 34px;
 		}
 
 		@include custombp(895) {
-			font-size: fontsize-px(800);
+			font-size: fontsize-px(600);
 		}		
 	}
 

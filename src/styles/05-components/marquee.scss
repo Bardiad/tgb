@@ -69,3 +69,32 @@
     transform: translateX(calc(-100% - var(--marqueeGap))); 
   }
 }
+
+.c-brands {
+	display:flex;
+	gap:space-px(500);
+	flex-wrap:wrap;
+	width:100%;
+
+	&__logo {
+		flex:1 0 200px;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+		padding:space-px(700) space-px(600);
+		border-radius:radius-px(200);
+		background-color:colorSet("ash", 50);
+
+		&:hover img {
+			filter:grayscale(0);
+		}
+	}
+
+	img {
+		width:100%;
+		max-width:160px;
+		height:auto;
+		filter:grayscale(1);
+		transition: filter .4s ease;
+	}
+}

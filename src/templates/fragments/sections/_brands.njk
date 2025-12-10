@@ -1,25 +1,29 @@
 <section id="brands" class="u-padding-b-1000 u-padding-b-1500-@xl u-padding-t-700 u-padding-t-1000-@xl">
 	<div class="o-fluid-width-container o-fluid-width-container--full-bleed">
-	<div class="o-container u-margin-b-500 u-text-align-center">
-		<h2 class="c-overline c-overline--fixed-large c-overline--light">Trusted by</h2>
+		<div class="o-container u-margin-b-500 u-text-align-center">
+			<h2 class="c-overline c-overline--fixed-large c-overline--light">Trusted by</h2>
+		</div>
+		{% set brandLogos = [
+			{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
+			{src: "img/logos/questrade.svg", alt: "Questrade"},
+			{src: "img/logos/unifor.png", alt: "Unifor"},
+			{src: "img/logos/jumptools.png", alt: "Jumptools"},
+			{src: "img/logos/cpacanada.png", alt: "Chartered Professional Accountants Canada"},
+			{src: "img/logos/ocadu.png", alt: "OCAD University"},
+			{src: "img/logos/alaia.png", alt: "Alaia Technologies"}						
+		] %}
+
+
+	{# {{ components.marquee(brandLogos) }}	 #}
 	</div>
-	{% set brandLogos = [
-		{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
-		{src: "img/logos/questrade.svg", alt: "Questrade"},
-		{src: "img/logos/unifor.png", alt: "Unifor"},
-		{src: "img/logos/jumptools.png", alt: "Jumptools"},
-		{src: "img/logos/cpacanada.png", alt: "Chartered Professional Accountants Canada"},
-		{src: "img/logos/ocadu.png", alt: "OCAD University"},
-		{src: "img/logos/alaia.png", alt: "Alaia Technologies"},
-		{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
-		{src: "img/logos/questrade.svg", alt: "Questrade"},
-		{src: "img/logos/unifor.png", alt: "Unifor"},
-		{src: "img/logos/jumptools.png", alt: "Jumptools"},
-		{src: "img/logos/cpacanada.png", alt: "Chartered Professional Accountants Canada"},
-		{src: "img/logos/ocadu.png", alt: "OCAD University"},
-		{src: "img/logos/alaia.png", alt: "Alaia Technologies"}								
-	] %}
-	{{ components.marquee(brandLogos) }}	
-	</div>
+	<div class="o-fluid-width-container">
+		<div class="c-brands">
+			{% for img in brandLogos %}
+				<div class="c-brands__logo">
+					<img src="{{ img.src }}" alt="{{img.alt}}"/>
+				</div>
+			{% endfor %}
+		</div>
+	</div>	
 </section>
 

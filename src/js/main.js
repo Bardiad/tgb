@@ -35,6 +35,7 @@ onDOMReady(() => {
 
   // Confetti Button
   const confettiButtons =  document.querySelectorAll(".js-confetti");
+
   confettiButtons.forEach((el) => {
     attachConfettiEffect(el);
   });
@@ -393,172 +394,163 @@ onDOMReady(() => {
 
 
   //Hero bg animation 
-
   const hero   = document.getElementById('hero');
   const canvas = document.getElementById('hero-grid');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setClearColor(0xffffff, 0);
 
-  // Renderer setup
-  const renderer = new THREE.WebGLRenderer({
-    canvas,
-    antialias: true,
-    alpha: true
-  });
-
-  renderer.setClearColor(0xffffff, 0); // transparent background
-
-  // Scene & camera
   const scene  = new THREE.Scene();
   const camera = new THREE.OrthographicCamera();
   camera.position.z = 1;
 
-  // Responsive sizing
-  let heroWidth = 0, heroHeight = 0;
+  // ─── CONFIG ────────────────────────────────────────────────────────────────────
+  let heroW = 0, heroH = 0;
 
-  function resizeRenderer() {
-    heroWidth  = hero.clientWidth;
-    heroHeight = hero.clientHeight;
-    renderer.setSize(heroWidth, heroHeight);
-    camera.left   = -heroWidth  / 2;
-    camera.right  =  heroWidth  / 2;
-    camera.top    =  heroHeight / 2;
-    camera.bottom = -heroHeight / 2;
-    camera.updateProjectionMatrix();
+  // grid variables
+  const colSpacing     = 16;
+  const rowSpacing     = 16;
+  const dotSize        = 8;
+  const dotRadius      = 2;
+
+  // repulsion settings
+  const repelRadius    = 140;
+  const maxRepelDist   = 60;
+  const easeFactor     = 0.20;
+
+  // colours
+  const greyColor   = new THREE.Color(0xe0e0e0);
+  const purpleColor = new THREE.Color(0x843FC4);
+
+  let sprites = [];
+  const spriteGroup = new THREE.Group();
+  scene.add(spriteGroup);
+
+  // Mouse
+  let mouse         = new THREE.Vector2(1e5,1e5);
+  let mouseActive   = false;
+
+  // ─── TEXTURE CREATION (move this up!) ─────────────────────────────────────────
+  function makeDotTexture() {
+    const c = document.createElement('canvas');
+    c.width = dotSize; c.height = dotSize;
+    const ctx = c.getContext('2d');
+    const r = dotRadius;
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.moveTo(r, 0);
+    ctx.lineTo(dotSize - r, 0);
+    ctx.quadraticCurveTo(dotSize, 0, dotSize, r);
+    ctx.lineTo(dotSize, dotSize - r);
+    ctx.quadraticCurveTo(dotSize, dotSize, dotSize - r, dotSize);
+    ctx.lineTo(r, dotSize);
+    ctx.quadraticCurveTo(0, dotSize, 0, dotSize - r);
+    ctx.lineTo(0, r);
+    ctx.quadraticCurveTo(0, 0, r, 0);
+    ctx.fill();
+    const tex = new THREE.CanvasTexture(c);
+    tex.minFilter = THREE.NearestFilter;
+    tex.magFilter = THREE.NearestFilter;
+    tex.generateMipmaps = false;
+    return tex;
   }
+  const dotTexture = makeDotTexture();
 
-  resizeRenderer();
-  window.addEventListener('resize', resizeRenderer);
-
-  // Media-query driven line count
-  const mq = window.matchMedia('(max-width: 768px)');
-
-  function getNumVertical() {
-    return mq.matches ? 0 : 25;
-  }
-
-  // Config & shared state
-  const attractionStrength = 5.05;
-  const lines              = [];
-  const baseMaterial       = new THREE.LineBasicMaterial({ color: 0xF2F2F8 });
-  const baseBrightness     = 0.65;
-  const hoverBoost         = 0.05;
-
-  // Utility: evenly spaced with jitter
+  // ─── GRID BUILDING ─────────────────────────────────────────────────────────────
   function generateJitteredPositions(count, range, jitter) {
     const step = range / (count + 1);
     return Array.from({ length: count }, (_, i) => {
-      const center = -range / 2 + step * (i + 1);
+      const center = -range/2 + step*(i+1);
       return center + THREE.MathUtils.randFloatSpread(jitter);
     });
   }
 
-  // Create one vertical line, disable culling
-  function createLine(x1, y1, x2, y2) {
-    const geometry = new THREE.BufferGeometry().setFromPoints([
-      new THREE.Vector3(x1, y1, 0),
-      new THREE.Vector3(x2, y2, 0),
-    ]);
-    const material = baseMaterial.clone();
-    const line = new THREE.Line(geometry, material);
-    line.frustumCulled = false; 
-    return line;
-  }
-
-  // Generate lines based on current breakpoint
-  function generateVerticalLines() {
-    const count = getNumVertical();
-    const positions = generateJitteredPositions(count, heroWidth, 100);
-    positions.forEach(baseX => {
-      const line = createLine(baseX, -heroHeight/2, baseX, heroHeight/2);
-      line.userData = {
-        base:      baseX,
-        offset:    Math.random() * 100,
-        amplitude: 15 + Math.random() * 15,
-        position:  baseX,
-        velocity:  0
-      };
-      scene.add(line);
-      lines.push(line);
+  function buildGrid() {
+    // clear
+    sprites.forEach(s => {
+      spriteGroup.remove(s);
+      s.material.dispose();
     });
+    sprites.length = 0;
+
+    const cols = Math.floor(heroW / colSpacing);
+    const rows = Math.floor(heroH / rowSpacing);
+    const startX = -heroW/2 + (heroW - cols*colSpacing)/2 + colSpacing/2;
+    const startY = -heroH/2 + (heroH - rows*rowSpacing)/2 + rowSpacing/2;
+
+    for (let yi = 0; yi <= rows; yi++) {
+      const y = startY + yi*rowSpacing;
+      for (let xi = 0; xi <= cols; xi++) {
+        const x = startX + xi*colSpacing;
+        const mat = new THREE.SpriteMaterial({
+          map: dotTexture,
+          color: greyColor.clone(),
+          transparent: true,
+          opacity: 0.6
+        });
+        const spr = new THREE.Sprite(mat);
+        spr.position.set(x, y, 0);
+        spr.scale.set(dotSize, dotSize, 1);
+        spr.userData = {
+          orig: new THREE.Vector2(x, y),
+          cur:  new THREE.Vector2(x, y)
+        };
+        spriteGroup.add(spr);
+        sprites.push(spr);
+      }
+    }
   }
 
-  // Clear old lines and build new ones
-  function updateLines() {
-    lines.forEach(line => scene.remove(line));
-    lines.length = 0;
-    generateVerticalLines();
+  // ─── RESIZE + INITIAL GRID ─────────────────────────────────────────────────────
+  function resize() {
+    heroW = hero.clientWidth;
+    heroH = hero.clientHeight;
+    renderer.setSize(heroW, heroH);
+    camera.left   = -heroW/2;
+    camera.right  =  heroW/2;
+    camera.top    =  heroH/2;
+    camera.bottom = -heroH/2;
+    camera.updateProjectionMatrix();
+    buildGrid();
   }
 
-  // Rebuild whenever the media query state changes
-  mq.addEventListener('change', updateLines);
+  window.addEventListener('resize', resize);
+  resize();
 
-  // Initial line build
-  updateLines();
-
-  // Mouse tracking
-  let mouse          = new THREE.Vector2(9999, 9999);
-  let mouseActive    = false;
-  let mouseInfluence = 0.5;
-  let mouseColourInfluence = 1.5;
-
+  // ─── MOUSE EVENTS ─────────────────────────────────────────────────────────────
   hero.addEventListener('mousemove', e => {
     const r = hero.getBoundingClientRect();
     mouse.x = e.clientX - r.left  - r.width/2;
     mouse.y = -(e.clientY - r.top - r.height/2);
     mouseActive = true;
   });
-
   hero.addEventListener('mouseleave', () => {
     mouseActive = false;
+    mouse.set(1e5,1e5);
   });
 
-  // Animation loop
-  function animate(time) {
+  // ─── ANIMATE ──────────────────────────────────────────────────────────────────
+  function animate() {
     requestAnimationFrame(animate);
-
-    // ease mouse movement influence
-    const targetMoveInf  = mouseActive ? 1 : 0;
-    mouseInfluence     += (targetMoveInf  - mouseInfluence)      * 0.09;
-
-    // ease mouse colour influence
-    const targetColourInf= mouseActive ? 1 : 0;
-    mouseColourInfluence+= (targetColourInf - mouseColourInfluence)* 0.09;    
-
-    lines.forEach(line => {
-      const posAttr = line.geometry.attributes.position;
-      const d       = line.userData;
-
-      // 1) base + drift
-      const drift = Math.sin(time * 0.0003 + d.offset) * d.amplitude;
-      let x       = d.base + drift;
-
-      // 2) apply velocity (repel) & damping
-      d.velocity *= 0.92;
-      x += d.velocity;
-      d.position = x;
-
-      // 3) mouse attraction
-      const distM     = Math.abs(mouse.x - d.position);
-      const attraction = (mouse.x - d.position)
-                        * attractionStrength
-                        / (distM * 0.05 + 1);
-      d.position += attraction * mouseInfluence;
-
-      // 4) brightness
-      const brightness = baseBrightness
-                       + Math.max(0, 1 - distM / 500)
-                         * hoverBoost
-                         * mouseColourInfluence;
-      line.material.color.setScalar(brightness);
-
-      // 5) write back to geometry
-      posAttr.setXYZ(0, d.position, -heroHeight/2, 0);
-      posAttr.setXYZ(1, d.position,  heroHeight/2, 0);
-      posAttr.needsUpdate = true;
+    sprites.forEach(s => {
+      const u = s.userData;
+      const dx = u.orig.x - mouse.x;
+      const dy = u.orig.y - mouse.y;
+      const d  = Math.hypot(dx, dy);
+      const inf = Math.max(0, 1 - d/repelRadius);
+      const dirx = d>0 ? dx/d : 0, diry = d>0 ? dy/d : 0;
+      const tx = u.orig.x + dirx * maxRepelDist * inf;
+      const ty = u.orig.y + diry * maxRepelDist * inf;
+      u.cur.x += (tx - u.cur.x) * easeFactor;
+      u.cur.y += (ty - u.cur.y) * easeFactor;
+      s.position.set(u.cur.x, u.cur.y, 0);
+      // colour
+      const t = inf * (mouseActive ? 1 : 0);
+      s.material.color.copy(greyColor).lerp(purpleColor, t);
     });
-
     renderer.render(scene, camera);
   }
-
   animate();
+
+
 
 });
