@@ -9,22 +9,20 @@ PAGE:
 {% block body %}
 
 {{ super()}}
-<section class="u-bg-color-ash-100 u-background-gradient u-padding-b-1100 u-padding-b-1500-@xl">
+<section class="u-bg-color-ash-100 u-background-gradient u-padding-t-1100 u-padding-t-1500-@xl u-padding-b-1100 u-padding-b-1500-@xl">
 	<div class="o-container">
-		<div class="u-flex flex-wrap flex-nowrap-@lg gap-1100 gap-700-@lg w-100">
-			<div aria-hidden="true" class="w-100 w-33-@lg">
-				<div class="w-100 w-80-@lg">
+		<div class="u-flex flex-wrap flex-nowrap-@lg u-justify-content-center w-100">
+			<div class="w-100 w-40-@lg">
+				{% set align = "left" %}
+				{% include "fragments/fragment.contact-page.njk"%}
+				<div class="w-100">
 					<h3 class="u-margin-b-500">Connect with me on social</h3>
 					<ul>
 						<li>LinkedIn</li>
 						<li>Instagram</li>
 						<li>Github</li>
 					</ul>
-				</div>
-			</div>
-			<div class="w-100 w-66-@lg">
-				{% set align = "left" %}
-				{% include "fragments/fragment.contact-form.njk"%}
+				</div>				
 			</div>
 		</div>
 	</div>

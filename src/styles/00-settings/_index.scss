@@ -1,4 +1,5 @@
 // This file is auto-generated. Do not edit directly.
+@forward '_variables';
 @forward 'tokens.colorsets' as token-*;
 @forward 'tokens.mq' as token-*;
 @forward 'tokens.radius' as token-*;
@@ -6,4 +7,3 @@
 @forward 'tokens.stroke' as token-*;
 @forward 'tokens.type' as token-*;
 @forward 'tokens.zindex' as token-*;
-@forward '_variables';
