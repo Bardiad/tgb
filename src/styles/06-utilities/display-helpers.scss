@@ -17,7 +17,7 @@
 }
 
 .u-show {
-  display: revert !important;
+  display: unset !important;
 }
 
 .u-sr-only {
@@ -86,7 +86,11 @@
     }
 
     .u-show-\@#{$bpkey} {
-      display: revert !important;
+      display: unset !important;
+    }
+
+    .u-show-flex-\@#{$bpkey} {
+      display:flex !important;
     }
 
     .u-sr-only-\@#{$bpkey} {

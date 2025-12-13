@@ -5,6 +5,7 @@
 			<div class="c-intro-wrapper w-100 w-50-@lg w-60-@xl">
 				<div class="c-inter-wrapper__inner u-text-align-left-@xs">
 
+					{% if data.META.canWork %}
 					<div class="open-to-work u-inlineblock u-margin-b-600">
 						<div class="c-open-to-work">
 							<div class="c-circle-pulse u-margin-r-300">
@@ -12,13 +13,14 @@
 								<div class="c-circle-pulse__fill"></div>
 								<div class="c-circle-pulse__outline"></div>
 							</div>
+						
 							<div>								
 								<p class="c-open-to-work__label">Available for full-time & contract roles</p>
 								<small class="c-open-to-work__roles u-color-ash-600 u-block">Sr. Designer, Design Lead, UX Manager</small>
 							</div>
 						</div>
-
 					</div>
+					{% endif %}					
 
 					<h1 class="display-3">I’m Bardia, a <span class="text-highlight">design leader</span>, with over a decade of experience in <span class="text-highlight">SaaS platforms</span>, <span class="text-highlight">fintech</span> and <span class="text-highlight">non-profit</span> industries.
 					</h1>

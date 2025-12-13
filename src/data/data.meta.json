@@ -1,5 +1,6 @@
 {
 	"lang" : "en",
 	"title" : "That Guy Bardia | UX Designer and developer",
-	"description" : "Default page description goes here"
+	"description" : "Default page description goes here",
+	"canWork" : false
 }

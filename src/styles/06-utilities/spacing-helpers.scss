@@ -40,7 +40,7 @@ $spaces : map.get(config.$token-scales, "space");
   }
 
   .u-padding-r-#{$step} {
-    padding-bottom:#{$value}px;
+    padding-right:#{$value}px;
   }
 
   .u-margin-auto-#{$step} {

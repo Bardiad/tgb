@@ -1,9 +1,13 @@
 <div class="o-nav-container">
-	<ul class="c-primary-nav u-hide-@xs u-show-@lg" role="navigation">
-		<li><a href="/index.html#projects">work</a></li>
-		<li><a href="/about.html">about</a></li>
-		<li><a href="/contact.html">contact</a></li>
-	</ul>
+	<div class="c-primary-nav u-hide-@xs u-show-flex-@lg">
+		<ul class="c-primary-nav u-padding-r-700" role="navigation">
+			<li><a href="/index.html#projects">work</a></li>
+			<li><a href="/about.html">about</a></li>
+			<li><a href="/contact.html">contact</a></li>
+		</ul>
+		
+		<button data-gtag-event="launch_contact_form" data-micromodal-trigger="contact-modal" class="c-button c-button--primary js-confetti">Get in touch</button>		
+	</div>	
 	<details class="c-mobile-nav u-hide-@lg">
 		<summary class="c-mobile-nav__toggle" aria-controls="mobile-menu">
 			<svg class="icon icon--bars" aria-hidden="true" focusable="false">
@@ -18,6 +22,7 @@
 			  <li class="c-mobile-nav__item"><a href="/about.html">About</a></li>
 			  <li class="c-mobile-nav__item"><a href="/contact.html">Contact</a></li>
 			</ul>
+			<button data-gtag-event="launch_contact_form" data-micromodal-trigger="contact-modal" class="c-button c-button--primary lg js-confetti">Get in touch</button>
 			<svg class="icon icon--close"
 				 role="button"
     			 tabindex="0"
