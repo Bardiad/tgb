@@ -87,8 +87,6 @@ onDOMReady(() => {
     });
   });
 
-  
-
   //Custom even tracking for buttons
   document.addEventListener('click', e => {
     const btn = e.target.closest('[data-gtag-event]');
@@ -104,7 +102,7 @@ onDOMReady(() => {
   const contactForm = document.getElementById("contactForm");
   const contactFormResult = contactForm.querySelector("[data-form-result]");
   const overlay = contactForm.querySelector("[data-form-overlay]");
-  const overlayText = overlay.querySelector(".c-contact-form__overlay-text .dot-animation");
+  // const overlayText = overlay.querySelector(".c-contact-form__overlay-text .dot-animation");
   let dotInterval = null;
 
   contactForm.addEventListener("submit", function (e) {
@@ -135,7 +133,9 @@ onDOMReady(() => {
 
         setTimeout(() => {
           hideOverlay();
-        }, 5000);
+          console.log("Closing modal...");
+          // MicroModal.close("contactForm");
+        }, 3000);
       }, 1500); // Simulate 1.5s delay
     } else {
       console.log("Submitting contact form...");
@@ -165,9 +165,11 @@ onDOMReady(() => {
           stopDotAnimation();
           setTimeout(() => {
             hideOverlay();
-          }, 5000);
+          }, 3000);
       });
     }
+    
+
   });
 
   function showOverlay() {

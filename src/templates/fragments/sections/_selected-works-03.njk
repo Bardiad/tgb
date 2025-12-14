@@ -4,37 +4,18 @@
 		<p class="subheading-1 u-font-weight-400 u-color-ash-500">Some of the work I'm most proud</p>
 	</div>
 	<div class="o-fluid-width-container">
-		{% set gridLayout = [
-		  { 
-		  	col: 'grid-col-6-@lg',
-		  	colStart: 'col-start-1'
-		  },
-		  { col: 'grid-col-6-@lg',
-		  	colStart: 'col-start-7'
-		  },
-		  { col: 'grid-col-6-@lg grid-col-4-@xxl',
-		  	colStart: 'col-start-1'
-		  },
-		  { col: 'grid-col-6-@lg grid-col-4-@xxl',
-		  	colStart: 'col-start-5'
-		  },
-		  { col: 'grid-col-12-@lg grid-col-4-@xxl',
-		  	colStart: 'col-start-9'
-		  }
-		] %}
 
 
-		<div class="grid gap-800 gap-0-@lg">
+		<div>
 		  {% for post in data.POSTS %}
-		    {% set layout = gridLayout[loop.index0] %}
 
 		    {% if post.isLast %}
-				<article class="c-banner c-banner--small c-banner--info  {{ layout.col }} {{ layout.colStart }} u-border-radius-0">
+				<article class="c-banner c-banner--small c-banner--info">
 					<h2 class="c-banner__heading subheading-1 u-text-align-left">Not everything’s here yet, but it’s on the way</h2>					
 					<p class="c-banner__description u-text-align-left">More case studies are on the way, in the mean time you can see my work from 2015-2018 on the <a href="old/">previous version of my site</a>.</p>
 				</article>		    	
 		    {% else %}
-			    <article class="c-post {{ layout.col }} {{ layout.colStart }}">
+			    <article class="c-post">
 			    	{% if not post.comingSoon %}
 						<a data-gtag-event="case_study_{{post.slug}}" href="/case-studies/{{ post.slug }}.html" class="u-block c-post__link-wrap">	
 			    	{% endif %}
@@ -62,13 +43,7 @@
 							</ul>
 							{% endif %}
 
-				        	<p class="c-post__description body-copy u-color-ash-500">{{ post.description }}</p>
-
-{# 							{% if post.comingSoon %}
-								<p class="u-font-size-300 u-text-italic">Case study coming soon</p>
-							{% else %}
-								<button class="c-button c-button--secondary c-button--small c-button--fw-@xs c-button--ib-@lg">Read case study</button>
-							{% endif % } #}					        	
+				        	<p class="c-post__description body-copy u-color-ash-500">{{ post.description }}</p>				        	
 				      	</div>
 					{% if not post.comingSoon %}
 						</a>
