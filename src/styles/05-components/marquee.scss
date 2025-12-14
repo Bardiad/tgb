@@ -73,8 +73,13 @@
 .c-brands {
 	display:flex;
 	gap:space-px(500);
-	flex-wrap:wrap;
+	flex-wrap:nowrap;
 	width:100%;
+	padding:0 config.$outer-margin-sm;
+
+	@include custombp(895){
+		padding:0 config.$outer-margin-lg;	
+	}	
 
 	&__logo {
 		flex:1 0 200px;

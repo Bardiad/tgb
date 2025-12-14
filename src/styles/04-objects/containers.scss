@@ -89,6 +89,8 @@
 	max-width:config.$copyContainerWidth;
 }
 
+
+/* SHAME: Move this to a utility file */
 .u-img-crisp {
   image-rendering: -moz-crisp-edges; /* Firefox */
   image-rendering: -o-crisp-edges; /* Opera */
@@ -108,3 +110,7 @@
 	}
 }
 
+
+.o-scrollable-container {
+	overflow-x: scroll;
+}

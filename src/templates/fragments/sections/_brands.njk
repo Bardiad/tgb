@@ -1,7 +1,7 @@
 <section id="brands" class="u-padding-b-1000 u-padding-b-1500-@xl u-padding-t-700 u-padding-t-1000-@xl">
 	<div class="o-fluid-width-container o-fluid-width-container--full-bleed">
 		<div class="o-container u-margin-b-500 u-text-align-center">
-			<h2 class="c-overline c-overline--fixed-large c-overline--light">Trusted by</h2>
+			<h2 class="subheading-1 u-font-weight-400">Trusted by</h2>
 		</div>
 		{% set brandLogos = [
 			{src: "img/logos/royallepage.svg", alt: "Royal LePage"},
@@ -12,11 +12,10 @@
 			{src: "img/logos/ocadu.png", alt: "OCAD University"},
 			{src: "img/logos/alaia.png", alt: "Alaia Technologies"}						
 		] %}
-
-
-	{# {{ components.marquee(brandLogos) }}	 #}
+		{# {{ components.marquee(brandLogos) }}	 #}
 	</div>
-	<div class="o-fluid-width-container">
+	
+	<div class="o-overflow-container o-scrollable-container">
 		<div class="c-brands">
 			{% for img in brandLogos %}
 				<div class="c-brands__logo">
